@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Peter-Liusongshan</title>
+  <title>myfirst | Peter-Liusongshan</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -84,7 +84,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -222,17 +222,12 @@
         <!-- // End height spacing helper -->
 
         <!-- ============================ END Hero Image =========================== -->
-      <!-- ============================ Content =========================== -->
-
+      
 <section id="intro">
     <div class="container">
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/08/16/HIGH-P-JS/">myfirst</a></h3>
-                    <span>
-                        <span class="post-meta">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
       <time datetime="2015-08-16T11:22:40.000Z" itemprop="datePublished">
           2015-08-16
       </time>
@@ -243,108 +238,65 @@
     
     
 </span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        高性能js第一章 Loading and Execution加载和运行 src属性加载JavaScript过程中。浏览器必须首先下载外部文件的代码，这是要占用一些时间，额按后解析并运行次代码，在此过程中，页面解析和用户交互是被完全阻塞的。
-最好把风格和行为所以来的部分放在一起，首先加载他们，使得页面可以得到正确的外观和行为。
-当同时加载多个script标签时使用瀑布流可以解决这个问题。
-ie 8，Firefox 3.5，Safari 4
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/08/16/HIGH-P-JS/">More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
+                <h1>myfirst</h1>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/08/16/myfirst/">myfirst</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-08-16T11:22:40.000Z" itemprop="datePublished">
-          2015-08-16
-      </time>
-    
-    
-    | 
-    <a href='/tags/first/'>first</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        first
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/08/16/myfirst/">More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="高性能js">高性能js</h1><h1 id="第一章_Loading_and_Execution加载和运行">第一章 Loading and Execution加载和运行</h1><p> src属性加载JavaScript过程中。浏览器必须首先下载外部文件的代码，这是要占用一些时间，额按后解析并运行次代码，在此过程中，页面解析和用户交互是被完全阻塞的。</p>
+<p>最好把风格和行为所以来的部分放在一起，首先加载他们，使得页面可以得到正确的外观和行为。</p>
+<p>当同时加载多个script标签时使用瀑布流可以解决这个问题。</p>
+<p>ie 8，Firefox 3.5，Safari 4，Chrome 2允许并行加载js文件。但是js的下载仍然要阻塞其他资源的下载过程。比如图片，脚本阻塞任然是个问题。</p>
+<p>定律一将脚本放在底部</p>
+<p>任何带有defer属性的script元素在DOM加载完成之前不会被执行，无论是内联脚本还是外部脚本文件都是这样。</p>
+<p>文档对象模型（DOM）允许你使用js动态创建HTML的几乎全部文档内容，其跟班在于script元素与页面其他元素没什么不同：引用变量可以通过DOM 进行检索，可以从文档中移动，删除，也可以被创建。一个新的script元素可以非常容易通过标准DOM 函数创建。</p>
+<p>当搅拌是“自运行”类型时这一机制运行正常。但是如果脚本只包含页面其他脚本调用的借口，则会带来问题。</p>
+<p>而ie支持另一种实现方式，它发出一个readystatechange时间。script元素有一个readyState属性，它的值随着下载外部文件的过程而改变，readyState有五种取值： 1，uninitalized  默认状态 2. loading 下载开始 3. loaded 下载完成 4. interactive 下载完成但尚不可用 5.complete所有数据已经准备好</p>
+<p>动态脚本元素：需要注意的是浏览器不保证文件加载的顺序。所有主流浏览器之中，中油Firefox和Opera保证脚本按照指定的顺序执行。其他浏览器将按照服务器返回他们的次序下载并运行不同的代码文件。</p>
+<p>如果多个文件的次序十分重要，更好的方法是将这些文件按照正常的次序链接成一个文件。独立文件可以一次性下载所有代码</p>
+<p>XHR脚本注入：首先创建一个XHR对象，然后下载js文件，接着用一个动态script元素将js代码注入页面。（2xx表示有效的呼应，304表示一个缓存响应）如果收到的是一个有效的响应，那么就创建一个新的script元素，将他的文本属性设置为从服务器接收到的responseText字符串。这样做实际上会创建一个带有内联代码的script元素，一但新script元素被添加到文档，代码会被执行，并准备使用。优点在于你下载不立即执行的js代码。</p>
+<p>最推荐的是非阻塞模式：  第一步：包含动态记载的js所需的代码然后加载页面初始化所需的出js之外的部分。这部分代码尽量小，坑你值包含loadScript（）函数，它下载和运行非常迅速，不会对页面造成很大干扰。将此代码防止在body的关闭标签body之前。这样不会影响其他部分的显示。 而且js文件完成下载，所有应用程序必须的DOM已经创建好，并做好访问准备，避免使用额外的事件处理  而另一种原则是直接将loadScript（）函数嵌入在页面中，这样可以避免另一次的HTTP请求。</p>
+<p>YUI3的核心设计理念为：用一个很小的初始代码，下载其余的功能代码。</p>
+<p>LazyLoad是一个更加强大的loadScript（）函数。它还可以下载多个js文件，并保证他们在所有浏览器上都能够按照正常顺序执行。</p>
+<p>LABjs，另一个非阻塞js加载库。必须在第一个script函数之后添加一个wait（）调用</p>
+<h1 id="第二章_Data_Access_数据访问">第二章 Data Access 数据访问</h1><p>在js中有四种基本的数据访问位置：</p>
+<p>1.直接量 Literal values ：直接量仅仅代表自己，而不存储于特定位置。js直接量包括：字符串，数字，布尔值，对象，数组，函数，正则表达式，具有特殊含义的空值，以及未定义。</p>
+<p>2.变量 Variables：使用car关键字创建用于存储数据值。</p>
+<p>3.数组项 Array items：具有数字索引，存储一个js数组对象。</p>
+<p>4.对象成员 Object members 对象成员：具有字符串索引，存储一个js对象。</p>
+<p>在运行期上下文的作用域链中，一个标识符所处的位置越深，它的读写速度就yueman.suoyi，函数中局部变量的访问速度总是最快的，而全局变量通常是最慢的。</p>
+<p>一般说，一个运行期上下文的作用域链不会被改变。但是，有两种表达式可以在运行时临时改变运行期上下文作用域链。第一个是with表达式。with表达式为多有对象属性创建一个默认操作变量。只要doucment存储在一个局部变量中，就可以获得性能上的提升。</p>
+<p>不仅with可以改变运行期上下文的作用域链，try-catch表达式和catch句子具有相同效果。当try发生错误时，程序流程自动转入catch块，并将异常对象推入作用域链前端的一个可变对象中。在catch块中，函数的所有局部变量现在被放在第二个作用域对象中。但是需要注意的是，只要catch句子执行完毕，作用域链就会返回到原来的状态。</p>
+<p>handleError（）函数是catch子句中运行的唯一代码，此函数以适应方法自有地处理错误，并接受由错误产生的一场对象。</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/08/01/hello-world/">Hello World</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-08-01T11:37:40.105Z" itemprop="datePublished">
-          2015-08-01
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new p
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/08/01/hello-world/">More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
         <nav class="pagination" role="pagination">
-          
-          
-        </nav>
+    
+    
+    <a class="pull-right" href="/2015/08/16/myfirst/">
+        myfirst →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2015/08/16/HIGH-P-JS/" data-title="myfirst" data-url="http://yoursite.com/2015/08/16/HIGH-P-JS/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"duoshuo_name"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
     </div>
 </section>
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>每一个不起舞的日子里都是对生命的辜负。</p>
-        </div>
-    </div>
-</section>
-<!-- ============================ END Content =========================== -->
+
 
       
 <!-- ============================ Footer =========================== -->
