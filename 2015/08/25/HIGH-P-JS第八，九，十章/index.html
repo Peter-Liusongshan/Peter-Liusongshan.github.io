@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives: 2015/8 | Peter-Liusongshan</title>
+  <title>第七，八，九章 | Peter-Liusongshan</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -84,7 +84,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -223,64 +223,72 @@
 
         <!-- ============================ END Hero Image =========================== -->
       
-
-
-<section id="services">
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/08/25/HIGH-P-JS第八，九，十章/">第七，八，九章</a></h4>
-                            
-                            <p><time datetime="2015-08-25T13:48:19.000Z"><a href="/2015/08/25/HIGH-P-JS第八，九，十章/">2015-08-25</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/08/19/HIGH-P-JS 第三，四，五，六，七章/">高性能js</a></h4>
-                            
-                            <p><time datetime="2015-08-19T04:55:31.000Z"><a href="/2015/08/19/HIGH-P-JS 第三，四，五，六，七章/">2015-08-19</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/08/16/HIGH-P-JS第一章第二章/">High Performance js</a></h4>
-                            
-                            <p><time datetime="2015-08-16T11:22:40.000Z"><a href="/2015/08/16/HIGH-P-JS第一章第二章/">2015-08-16</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/08/01/hello-world/">Hello World</a></h4>
-                            
-                            <p><time datetime="2015-08-01T11:37:40.105Z"><a href="/2015/08/01/hello-world/">2015-08-01</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2015-08-25T13:48:19.000Z" itemprop="datePublished">
+          2015-08-25
+      </time>
+    
+    
+    | 
+    <a href='/tags/高性能js随笔/'>高性能js随笔</a>
+    
+    
+</span>
+                <h1>第七，八，九章</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="第八章_Programming_Practices_编程实践">第八章 Programming Practices 编程实践</h1><p>js提出了一些独特的性能挑战，关系到你组织代码的方法。网页应用变得越来越高级，包含的js代码越来越多，出现了一些模式和反模式。请牢记几点：</p>
+<p>1，通过避免使用eval_r()和Function（）构造器避免二次评估。此外，给setTimeout（）和setInterval（）传递函数参数而不是字符串参数。</p>
+<p>2,创造对象和数组时使用对象直接量和数组直接量。他们比非直接量形式创建和初始化更快。</p>
+<p>3，避免重复进行相同工作。当需要检测浏览器时，使用延迟加载或条件预加载。</p>
+<p>4，当执行数学运算时，考虑使用位操作符，他直接在数字底层进行操作。</p>
+<p>5，原生方法总是比js写的东西要快，尽量使用原生方法。</p>
+<h1 id="第九章_创建并部署高性能js应用程序">第九章 创建并部署高性能js应用程序</h1><p>开发和部署过程对基层js的应用程序可以产生巨大影响，最重要的几部如下：</p>
+<p>1，合并js文件，减少HTTP请求的数量</p>
+<p>2，使用YUI压缩器紧凑处理js文件</p>
+<p>3，以压缩形式提供js文件</p>
+<p>4，通过设置HTTP响应报文件使js文件可缓存，通过向文件名附加时间戳解决缓存问题。</p>
+<p>5，使用内容传递网络提供js文件，CDN不仅可以提高性能，它还可以为你管理压缩和缓存。</p>
+<h1 id="第十章_Tools_工具">第十章 Tools 工具</h1><p>当页面或应用程序变慢时，分析网上传来的字元，分析脚本的运行性能，使你能够集中精力在那些需要努力优化的地方。</p>
+<p>使用网络分析器找出加载脚本和其他页面字元的瓶颈所在，这有助于决定那些脚本需要延迟加载，或者进行进一步分析。</p>
+<p>传统的智慧告诉我们尽量减少HTTP请求的数量，尽量延迟加载脚本以使页面渲染速度更快，向用户提供更好的整体体验。</p>
+<p>使用性能分析器找出脚本运行时速度慢的部分，检查每个好书所花费的时间，以及函数被调用的次数，通过调用栈自身提供的一些线索找出那些低昂应当努力优化。</p>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>每一个不起舞的日子里都是对生命的辜负。</p>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2015/08/19/HIGH-P-JS 第三，四，五，六，七章/">
+        高性能js →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2015/08/25/HIGH-P-JS第八，九，十章/" data-title="第七，八，九章" data-url="http://yoursite.com/2015/08/25/HIGH-P-JS第八，九，十章/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"duoshuo_name"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
