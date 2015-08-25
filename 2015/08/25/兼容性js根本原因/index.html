@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives | Peter-Liusongshan</title>
+  <title>Compatibility-JS（一） | Peter-Liusongshan</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -84,7 +84,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -223,76 +223,67 @@
 
         <!-- ============================ END Hero Image =========================== -->
       
-
-
-<section id="services">
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/08/25/兼容性js根本原因/">Compatibility-JS（一）</a></h4>
-                            
-                            <p><time datetime="2015-08-25T14:31:16.000Z"><a href="/2015/08/25/兼容性js根本原因/">2015-08-25</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/08/25/HIGH-P-JS第八，九，十章/">High Performance js（三）</a></h4>
-                            
-                            <p><time datetime="2015-08-25T13:48:19.000Z"><a href="/2015/08/25/HIGH-P-JS第八，九，十章/">2015-08-25</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/08/19/HIGH-P-JS 第三，四，五，六，七章/">High Performance js（二）</a></h4>
-                            
-                            <p><time datetime="2015-08-19T04:55:31.000Z"><a href="/2015/08/19/HIGH-P-JS 第三，四，五，六，七章/">2015-08-19</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/08/16/HIGH-P-JS第一章第二章/">High Performance js(一)</a></h4>
-                            
-                            <p><time datetime="2015-08-16T11:22:40.000Z"><a href="/2015/08/16/HIGH-P-JS第一章第二章/">2015-08-16</a></time></p>
-                        </div>
-                    
-                        
-                            </div><div class="row boxes">
-                            
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/08/01/hello-world/">Hello World</a></h4>
-                            
-                            <p><time datetime="2015-08-01T11:37:40.105Z"><a href="/2015/08/01/hello-world/">2015-08-01</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2015-08-25T14:31:16.000Z" itemprop="datePublished">
+          2015-08-25
+      </time>
+    
+    
+    | 
+    <a href='/tags/兼容性js随笔/'>兼容性js随笔</a>
+    
+    
+</span>
+                <h1>Compatibility-JS（一）</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="根本原因">根本原因</h1><p>1.问题描述</p>
+<p>1、注释内容含中横线（-）在 Firefox 中可能会使中间内容丢失。</p>
+<blockquote>
+<p>解决办法：按标准推荐的方法写注释标签，如</p>
+<pre><code>&lt;!--  <span class="regexp">//</span>此处 <span class="string">"&lt;!"</span> 和 <span class="string">"--"</span> 之间尽量不要有空格。
+</code></pre><p>这里是注释内容，应避免在注释内容中出现两个或以上的“-”字符。<br>–&gt;  //此处 “–” 和 “&gt;” 之间避免有空格。</p>
+</blockquote>
+<p>2.各浏览器对于字符编码别名支持的宽泛程度有差异，当指定了浏览器无法识别的字符编码别名时，浏览器会以确定编码的优先级顺序采用设置的更低优先级的字符编码，以此类推。<br>而 Chrome Safari Opera 中对字符编码别名有着比其他浏览器更宽泛的支持。</p>
+<blockquote>
+<p>首先，对于动态页面必须确保 HTTP “Content-Type” 头字段的 “charset” 参数与页面自身编码相符，且务必在页面的 META 元素中也声明相符的字符编码信息。对于静态页面，必须保证页面中 META 元素声明中 “http-equiv” 为 “Content-Type” 对应的值中的 “charset” 的值与页面自身编码相符。<br>其次，在设置字符编码别名时，最好使用最通用的、各浏览器均可识别的编码别名。</p>
+</blockquote>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>每一个不起舞的日子里都是对生命的辜负。</p>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2015/08/25/HIGH-P-JS第八，九，十章/">
+        High Performance js（三） →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2015/08/25/兼容性js根本原因/" data-title="Compatibility-JS（一）" data-url="http://yoursite.com/2015/08/25/兼容性js根本原因/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"duoshuo_name"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
