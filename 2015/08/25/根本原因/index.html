@@ -250,119 +250,24 @@
 </code></pre><p>这里是注释内容，应避免在注释内容中出现两个或以上的“-”字符。<br>–&gt;  //此处 “–” 和 “&gt;” 之间避免有空格。</p>
 </blockquote>
 <p>2.各浏览器对于字符编码别名支持的宽泛程度有差异，当指定了浏览器无法识别的字符编码别名时，浏览器会以确定编码的优先级顺序采用设置的更低优先级的字符编码，以此类推。<br>而 Chrome Safari Opera 中对字符编码别名有着比其他浏览器更宽泛的支持。</p>
-<p>解决方法：</p>
 <blockquote>
 <p>首先，对于动态页面必须确保 HTTP “Content-Type” 头字段的 “charset” 参数与页面自身编码相符，且务必在页面的 META 元素中也声明相符的字符编码信息。对于静态页面，必须保证页面中 META 元素声明中 “http-equiv” 为 “Content-Type” 对应的值中的 “charset” 的值与页面自身编码相符。<br>其次，在设置字符编码别名时，最好使用最通用的、各浏览器均可识别的编码别名。</p>
 </blockquote>
-<p>3.对于 URI 中非 ASCII 字符，并非所有浏览器都是按照 HTML 4.01 规范中的建议实现的，而且不同浏览器在处理不同形式的 URI 时，表现也有差异。</p>
-<p>解决方法:</p>
-<blockquote>
-<p>当 URI 中含有非 ASCII 字符时，不要依赖浏览器对 URI 的编码方式，以避免产生差异。建议：</p>
-</blockquote>
-<p>在使用此 URI 之前，先对其进行处理，如使用 JS 的 encodeURI 或 encodeURIComponent 方法（JS 的这两个方法会将字符串转换为 UTF-8 并做百分比编码）。<br>在使用 XHR 对象发送 Ajax 请求时，如果仅在 query 部分含有非 ASCII 字符，请使用 post 方法发送，并在 send 之前使用 xhrObject.setRequestHeader(“Content-Type”,”application/x-www-form-urlencoded”)。或者仍使用 get 方法，但在发送前使用 encodeURI 或 encodeURIComponent 方法编码。<br>经过上述处理，在此 URI 的接收端使用 UTF-8 编码来解码，如： </p>
-<p>客户端 JS：</p>
-<pre><code><span class="keyword">var</span> queryString = decodeURI(uriString <span class="keyword">or</span> queryString);
-</code></pre><p>服务端 JAVA： </p>
-<pre><code><span class="built_in">request</span>.setCharacterEncoding(<span class="string">"UTF-8"</span>);
-<span class="built_in">String</span> queryString = <span class="built_in">request</span>.getParameter(queryName);
-</code></pre><p>4.问题描述：如果在 DTD 之前加入注释或其他内容，在某些浏览器中该 DTD 将无法被识别。</p>
-<p>解决方案：声明 DTD 时，确保 DTD 之前没有其他字符，即便有，也只能是空格符、换行符和制表符。</p>
-<p>如将 DTD 放在 HTML 文档的第一行。</p>
-<p>5.问题描述：Chrome 和 Safari 中标签紧密相邻的行内元素在折行显示时存在错误。</p>
-<p>解决方案：<br>避免出现紧密连接的内联元素标签，可以在每个标记之间加入空格或者换行符来避免这个问题。</p>
-<p>6<br>问题描述：通过 META 元素可以控制页面定时跳转，对于 http-equiv 属性为 refresh 时对应的 content 属性的值中，跳转时间与跳转 URL 之间需要分隔符分开，如果使用非 ‘;’ 的分隔符时，在某些浏览器下将不能达到期望的效果。</p>
-<p>解决方案：</p>
-<ol>
-<li><p>参照 W3C 的建议，使用服务端进行页面跳转。</p>
-</li>
-<li><p>使用合法的，所有浏览器均支持的写法：</p>
-</li>
-</ol>
-<pre><code><span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"refresh"</span> <span class="attribute">content</span>=<span class="value">"3; url=http://www.google.cn/intl/zh-CN/images/logo_cn.gif"</span>&gt;</span>
-</code></pre><p>7.问题描述：IE6/7 及 IE8 混杂模式(Q) 会忽略同一行内 OBJECT、IFRAME 元素之后的空白符。</p>
-<p>解决方案：若不希望出现空格，可以将 IFRAME OBJECT 元素设置为块级元素。</p>
-<p>8.问题描述：IE6 IE7 IE8(Q) 中当 OBJECT 元素之前的行内文本由 “&nbsp;” 构成，且 “&nbsp;” 宽度之和小于容器宽度时，OBJECT 元素不发生折行；而 “&nbsp;” 宽度之和超过容器时，OBJECT 元素会折行显示。而在 IE8(S) Opera 中，出现上述情况时，OBJECT 元素始终不会发生折行。</p>
-<p>解决方案：</p>
-<p>合理的设置容器及 OBJECT 元素的宽度。</p>
-<p>若需要 OBJECT 元素不发生折行，则为容器设置 “white-space:nowrap” ；<br>若需要 OBJECT 元素折行，则在 OBJECT 元素之前加入明确的换行符 “<br>“ 。</p>
-<p>9.问题描述：Chrome 和 Safari 中 BR 元素前的空白符不会被忽略，多余的空白符将被压缩为一个空白符并渲染到 BR 元素之前的行中。</p>
-<p>解决方案：删除 BR 元素之前多余的空白符。</p>
-<p>10.问题描述：单元格的 colspan 属性在 IE 中可能影响 TABLE 元素的自动布局。</p>
-<p>解决方案：</p>
-<ol>
-<li><p>设置 TABLE 的 ‘table-layout’ 特性值为 fixed，使用固定布局的表格元素可避免此问题。</p>
-</li>
-<li><p>单元格所跨过的列的宽度都设置成 auto。</p>
-</li>
-</ol>
-<p>11.问题描述：在 Firefox 中，TABLE 元素 ‘width’ 属性的百分比值大于 100% 时，Firefox 会按 100% 处理；如果是 CSS 的 ‘width’ 特性，则不会这么处理。</p>
-<p>解决方案：<br>给 TABLE 元素设置宽度的时候，不要使用 HTML 属性 ‘width’，请使用 CSS 特性 ‘width’。</p>
-<p>12.问题描述：在 IE 中，不仅 TD 和 TH 元素，其他一些元素也拥有 noWrap 属性。</p>
-<p>解决方案：nowrap 属性是被废弃的属性，使用 CSS 规则 white-space:nowrap 代替这个属性。</p>
-<p>12、问题描述：IE6 IE7 IE8(Q) 对 COL 和 COLGROUP 元素的属性及部分 CSS 特性支持较好，而IE8(S) Firefox Chrome Safari 不再支持 COL 及 COLGROUP 元素的部分属性及为其设定的 CSS 特性。</p>
-<p>解决方案：<br>当使用 COLGROUP COL 时需注意各浏览器对属性及 CSS 样式的设置，避免造成兼容性问题。</p>
-<p>13.问题描述：若表格设定了大于零的水平单元格间隙 (即 cellspacing 属性)，且其内单元格存在过度设定的 colspan 属性，也就是单元格横跨的列数的设定值多余实际存在的单元格的个数，这时各浏览器对表格的渲染效果存在较大差异。</p>
-<p>解决问题：在进行表格布局时，务必精准设定 colspan 属性的值。</p>
-<p>14：问题描述：BASE 元素出现在 BODY 中，且定义了 target 属性，各浏览器表现不一致。</p>
-<p>解决方案：不要在 HEAD 元素之外定义 BASE 元素，保证各浏览器兼容。</p>
-<p>15：问题描述：通常情况下，IE 系列浏览器通过 ActiveX 插件使用 OBJECT 元素引入 Flash，而其他浏览器则是通过相应的 NPAPI 插件使用 EMBED 元素。这造成了各浏览器中插入 Flash 的方式的差异。</p>
-<p>解决问题：若不考虑 W3C 校验，可统一使用 EMBED 元素嵌入 Flash，这样可以避免因参数不统一导致的兼容性问题。<br>若需要考虑 W3C 校验（ Markup Validation Service），则可使用第三种单独使用 OBJECT 与 PARAM 元素的方式。<br>若必须使用 OBJECT 嵌套 EMBED 元素这种混合方式，则要保证 Flash 文件 URL、为 Flash 传递的参数、宽度、高度、wmode 等参数保持统一。<br>可以使用开源的 SWFObject 引入 Flash。（请参见：） </p>
-<p>16.问题描述：”src” 属值为空的 IMG 元素，其渲染的尺寸在各浏览器中将有很大差异。</p>
-<p>解决问题：为了防止这种无 “src” 的 IMG 元素对页面产生布局影响，需要设置这种 IMG 的 ‘display’ 特性为 ‘none’。</p>
-<p>17.问题描述：alt 属性在 IE6 IE7 IE8(Q) 下具有双重意义。在给 IMG、AREA、INPUT[type=image] 元素设置的 alt 属性值不但可以作为该元素的替代文字，在该元素没有指定 title 属性时，还可以作为提示信息（tooltip）被显示出来。 </p>
-<p>解决方案：</p>
-<p>若用户需要显示提示框，则指定 title 属性； </p>
-<p>若用户不需要显示提示框，则指定 title=””。 </p>
-<p>18.问题描述：PNG24 格式图片可以携带 Alpha 半透明通道，以便呈现从透明到不透明间过渡色彩效果，但是 IE6 不支持这种格式原有的透明特性。</p>
-<p>解决方案：<br>使用 IE 专有滤镜 AlphaImageLoader Filter 来修复 IE6 透明通道问题，详情请参考 MSDN 说明： <a href="http://msdn.microsoft.com/en-us/library/ms532969(VS.85).aspx" target="_blank" rel="external">http://msdn.microsoft.com/en-us/library/ms532969(VS.85).aspx</a><br>或者使用脚本批量处理方式：</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">fixpng24</span><span class="params">()</span>{</span>
-var arVersion = navigator.appVersion.split<span class="params">(<span class="string">"MSIE"</span>)</span>;
-var <span class="built_in">version</span> = parseFloat<span class="params">(arVersion[<span class="number">1</span>])</span>;
-<span class="keyword">if</span> <span class="params">(<span class="params">(version &gt;= <span class="number">5.5</span>)</span> &amp;&amp; <span class="params">(document.body.filters)</span>)</span>{
-   <span class="keyword">for</span><span class="params">(var i=<span class="number">0</span>; i&lt;document.images.length; i++)</span>{
-      var img = document.images[i];
-      <span class="keyword">if</span> <span class="params">(img.src.toLowerCase<span class="params">()</span>.slice<span class="params">(-<span class="number">3</span>)</span> == <span class="string">"png"</span>)</span>{
-         var imgID = <span class="params">(img.id)</span> ? <span class="string">"id='"</span> + img.id + <span class="string">"' "</span> : <span class="string">""</span>;
-         var imgClass = <span class="params">(img.className)</span> ? <span class="string">"class='"</span> + img.className + <span class="string">"' "</span> : <span class="string">""</span>;
-         var imgTitle = <span class="params">(img.title)</span> ? <span class="string">"title='"</span> + img.title + <span class="string">"' "</span> : <span class="string">"title='"</span> + img.alt + <span class="string">"' "</span>;
-         var imgStyle = <span class="string">"display:inline-block;"</span> + img.style.cssText ;
-         <span class="keyword">if</span> <span class="params">(img.align == <span class="string">"left"</span>)</span> imgStyle = <span class="string">"float:left;"</span> + imgStyle;
-         <span class="keyword">if</span> <span class="params">(img.align == <span class="string">"right"</span>)</span> imgStyle = <span class="string">"float:right;"</span> + imgStyle;
-         <span class="keyword">if</span> <span class="params">(img.parentElement.href)</span> imgStyle = <span class="string">"cursor:pointer;"</span> + imgStyle;
-         var strNewHTML = <span class="string">"&lt;span "</span> + imgID + imgClass + imgTitle
-         + <span class="string">" style=\"width:"</span> + img.width + <span class="string">"px; height:"</span> + img.height + <span class="string">"px;"</span> + imgStyle
-         + <span class="string">"filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"</span>
-         + <span class="string">"(src='"</span> + img.src + <span class="string">"', sizingMethod='scale');\"&gt;&lt;/span&gt;"</span>;
-         img.outerHTML = strNewHTML;
-         i--;
-      }
-   }
-}
-</code></pre><p>}</p>
-<p>19.问题描述：当给一个现有的 IMG 元素重设其 “src” 为其当前的 “src” 时，只有 IE6 会重现载入该图片，其他浏览器则不会。</p>
-<p>解决方案：如果需要重复设置相同的 src 值时，均触发 IMG 的 onload 事件，或者需要每次均从服务器端下载图片数据的时候，可以采用图片地址后加上随机数或当前时间戳参数的手段，避免内容被缓存。</p>
-<p>20.问题描述：IE Chrome Safari 支持通过为 OBJECT 元素设置 classid 引入 Windows 下的 Media Player 或 Flash 插件。而 Windows 版的 Firefox 与 Opera 无法支持这种形式引入这些插件。</p>
-<p>解决方案：由于某些浏览器原生无法支持 OBJECT 元素使用 classid 属性引入 Media Player 插件，所以为保证最大的兼容性，应避免使用此方式在页面中播放媒体文件。</p>
-<p>可以考虑使用 Flash，或者合理的利用 IE 对 Media Player 的支持及其其他浏览器对 HTML5 的新标签 “VIDEO” 与 “AUDIO” 的支持在不同浏览器中达到相类似的效果。</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/08/25/根本原因/" style="float: left;">
-        ← Compatibility-JS（一）
-    </a>
     
-    
-    <a class="pull-right" href="/2015/08/25/HIGH-P-JS第八，九，十章/">
-        High Performance js（三） →
+    <a class="pull-right" href="/2015/08/25/兼容性js根本原因/">
+        Compatibility-JS（一） →
     </a>
     
 </nav>
 
         <div class="duoshuo">
-<div class="ds-thread" data-thread-key="2015/08/25/兼容性js根本原因/" data-title="Compatibility-JS（一）" data-url="http://yoursite.com/2015/08/25/兼容性js根本原因/"></div>
+<div class="ds-thread" data-thread-key="2015/08/25/根本原因/" data-title="Compatibility-JS（一）" data-url="http://yoursite.com/2015/08/25/根本原因/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"duoshuo_name"};
 (function() {
