@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>兼容性js（二） | Peter-Liusongshan</title>
+  <title>Compatibility-JS（二） | Peter-Liusongshan</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -232,12 +232,20 @@
           2015-08-27
       </time>
     
+    
+    | 
+    <a href='/tags/兼容性js随笔/'>兼容性js随笔</a>
+    
+    
 </span>
-                <h1>兼容性js（二）</h1>
+                <h1>Compatibility-JS（二）</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		
+      		<h1 id="#">#</h1><p>101.问题描述：<br>IE6 及 IE7/8 的混杂模式下，非替换绝度定位元素当指定了 ‘left’ 及 ‘right’，而 ‘width’ 为默认值 “auto” 。此时浏览器无法正确地计算出 ‘width’ 的值，对于高度的计算也是如此。</p>
+<p>解决方案：<br>若能为非替换绝对定位元素设定固定的宽度及高度，则尽量不使用此方式自动计算绝对定位元素的 ‘width’ 及 ‘height’；若无法避免使用此方式，则可以通过判断浏览器，仅在 IE6 中使用 CSS Expression 控制绝对定位元素的宽度及高度。</p>
+<p>使用 CSS Expression 控制绝对定位元素的宽度及高度的参考代码如下：</p>
+
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
@@ -251,7 +259,7 @@
 </nav>
 
         <div class="duoshuo">
-<div class="ds-thread" data-thread-key="2015/08/27/兼容性js（二）/" data-title="兼容性js（二）" data-url="http://yoursite.com/2015/08/27/兼容性js（二）/"></div>
+<div class="ds-thread" data-thread-key="2015/08/27/兼容性js（二）/" data-title="Compatibility-JS（二）" data-url="http://yoursite.com/2015/08/27/兼容性js（二）/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"duoshuo_name"};
 (function() {
