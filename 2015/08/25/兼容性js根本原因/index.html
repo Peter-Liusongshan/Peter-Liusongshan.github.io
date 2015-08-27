@@ -242,7 +242,7 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1 id="根本原因">根本原因</h1><p>1.问题描述</p>
+      		<h1 id="根本原因">根本原因</h1><h2 id="渲染-HTML相关">渲染-HTML相关</h2><p>1.问题描述</p>
 <p>1、注释内容含中横线（-）在 Firefox 中可能会使中间内容丢失。</p>
 <blockquote>
 <p>解决办法：按标准推荐的方法写注释标签，如</p>
@@ -344,6 +344,359 @@ var <span class="built_in">version</span> = parseFloat<span class="params">(arVe
 <p>20.问题描述：IE Chrome Safari 支持通过为 OBJECT 元素设置 classid 引入 Windows 下的 Media Player 或 Flash 插件。而 Windows 版的 Firefox 与 Opera 无法支持这种形式引入这些插件。</p>
 <p>解决方案：由于某些浏览器原生无法支持 OBJECT 元素使用 classid 属性引入 Media Player 插件，所以为保证最大的兼容性，应避免使用此方式在页面中播放媒体文件。</p>
 <p>可以考虑使用 Flash，或者合理的利用 IE 对 Media Player 的支持及其其他浏览器对 HTML5 的新标签 “VIDEO” 与 “AUDIO” 的支持在不同浏览器中达到相类似的效果。</p>
+<p>21.问题描述：<br>Firefox Opera 中 OBJECT 元素的默认尺寸为不可视；而 IE 中，OBJECT 默认尺寸为 16 x 16 像素；在 Chrome 和 Safari 下的默认尺寸为 300 x 150 像素。</p>
+<p>解决方案：OBJECT 元素为替换元素，应为 OBJECT 元素设置一个明确的宽度和高度。</p>
+<p>22.问题描述：IE Opera 中，IMG 元素通过其 usemap 属性可以与 MAP 元素的 id 属性及 name 属性关联，而 Firefox Chrome Safari 中仅限于 MAP 元素的 name 属性。</p>
+<p>解决问题：若需要 IMG 元素与 MAP 元素相关联，注意通过 IMG 元素的 usemap 属性关联的 MAP 元素的 name 属性的值。</p>
+<p>23.问题描述:MAP 元素会影响指向 MAP 的元素，其父元素 A 元素的默认链接行为。</p>
+<p>IE6 IE7 IE8 中，产生自 MAP 元素的事件冒泡路径，不依赖 MAP 本身所处的元素嵌套规则，他会执行到引向 MAP 的元素嵌套结构中。</p>
+<p>解决问题：注意 MAP 标记与其他标记的嵌套关系，IE6 IE7 IE8 中的 MAP 冒泡机制是根据指向 MAP 标记的标记位置决定的。如果期望所有浏览器冒泡路径基本一致，可以将 MAP 标记放在引用 MAP 的标记的兄弟级别。<br>注意 A 标记的默认导航行为触发限制，即使标签嵌套一致，点击事件冒泡路颈 A 标记，也不会在 IE6 IE7 IE8 Firefox 中触发浏览器默认行为产生导航。可以利用 A 标记也会执行点击事件冒泡的特性，使用 A 标记的 “click” 事件代替 “href” 属性执行页面跳转工作。 </p>
+<p>24.问题描述：CENTER 元素在 IE6 IE7 IE8(Q) 中会使自身也居中对齐，除了上述浏览器，在 IE(S) 与 Opera(S) 中 CENTER 元素还会使其内表格中的单元格内文本居中对齐。</p>
+<p>解决问题：避免使用 CENTER 标签，使用 CSS 的 ‘text-align’ 特性来代替。</p>
+<p>25.问题描述：Firefox Chrome Safari 会将 DIV H1~H6 P 元素的 align=”middle” 解释为 align=”center”，从而使这些元素能够居中对齐。<br>Firefox 混杂模式会将 TABLE 元素 align=”middle” 解释为 align=”center”，使 TABLE 元素居中对齐。<br>IE6 IE7 Chrome Safari Opera 及 IE8 Firefox 的混杂模式下，均将 TD TH 元素的 align=”middle” 理解为 align=”center”。</p>
+<p>解决问题：<br>align=”middle” 仅在 IMG、OBJECT、APPLET 元素上的 align 属性中是合法值，对于其他元素的 align 属性均为非法。各浏览器在上述三个元素之外的元素上遇到 align=”middle” 均按照自己的理解方式解释。同时除单元格元素的 align 属性之外，其他的 align 属性均被 W3C 官方废弃（Deprecated.），所以应避免使用此属性。</p>
+<p>26.问题描述:Chrome Safari 子页面中使用 frames 集合获取其父页面中通过 innerHTML 移动位置后的 IFRAME 元素得到的对象类型为 HTMLIFrameElement，而不是正常的 Window，这将导致其下的 document 等子对象无法访问。<br>Firefox 中，子页面中获取在 window.onload 中移动位置后的 IFRAME 元素 window 对象内的一些子对象可能出错。</p>
+<p>解决方案:<br>推荐使用 document.getElementById(“IFRAME”).contentWindow.document 获取 IFRAME 元素内页面的 document 对象，且对于在文档树中移动位置后的 IFRAME 元素也有很好的兼容性。同时应避免对跨域的父子页面交互。</p>
+<p>27.问题描述:<br>当 “marginwidth” 和 “marginheight” 属性值被设定为小于零或其他非法值时，各浏览器对其处理不同。</p>
+<p>解决方案:<br>在使用 “marginwidth” 和 “marginheight” 时应严格遵照规范中的描述，要对其设定大于等于零的数值。</p>
+<p>28.问题描述:<br>各浏览器对 BODY 元素或通常被放置在 BODY 元素内的元素出现在第一个 FRAMESET 元素之前时，最终生成的文档树存在差异。</p>
+<p>解决方案:<br>针对此问题在各浏览器中产生的差异，要看设计者的最终目的是什么，但始终应该参照规范中的描述使得 BODY 元素或通常被放置在 BODY 元素内的元素不能出现在第一个 FRAMESET 元素之前。 </p>
+<p>29.问题描述:<br>各浏览器对 BODY 元素或通常被放置在 BODY 元素内的元素出现在第一个 FRAMESET 元素之前时，最终生成的文档树存在差异。</p>
+<p>解决方案：针对此问题在各浏览器中产生的差异，要看设计者的最终目的是什么，但始终应该参照规范中的描述使得 BODY 元素或通常被放置在 BODY 元素内的元素不能出现在第一个 FRAMESET 元素之前。 </p>
+<p>30.问题描述：<br>对于文本选择控件 “INPUT[type=file]” ，各浏览器对其有不同形式的渲染，并且某些 CSS 特性也有着不同的表现。其中 Chrome Safari中对文件选择控件的渲染样式与其他浏览器有较大区别，这是由于浏览器所用的 WebKit 内核设计所致。</p>
+<p>在 Chrome Safari 中对于文件选择控件的特殊呈现方式为 WebKit 内核特有，且其渲染方式也符合 W3C 对文件选择控件的规定。一般来说这种差异不会带来严重的兼容性问题。</p>
+<p>若需要强制在所有浏览器中呈现一样的效果，即文本框+按钮方式，则需要一些处理，</p>
+<pre><code><span class="tag">&lt;<span class="title">html</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css">
+<span class="tag">form</span><span class="class">.example</span> <span class="tag">input</span> <span class="rules">{
+<span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url</span>(<span class="string">'input_boxes.gif'</span>) no-repeat <span class="number">0</span> -<span class="number">58px</span></span></span>;
+<span class="rule"><span class="attribute">border</span>:<span class="value"> none</span></span>;
+<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">241px</span></span></span>;
+<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">20px</span></span></span>;
+<span class="rule"><span class="attribute">padding-left</span>:<span class="value"> <span class="number">3px</span></span></span>;
+<span class="rule"><span class="attribute">padding-top</span>:<span class="value"> <span class="number">3px</span></span></span>;
+}</span>
+<span class="tag">form</span><span class="class">.example</span> <span class="rule"><span class="attribute">input</span>:<span class="value">focus {
+background-color: transparent</span></span>;
+}
+<span class="tag">form</span><span class="class">.example</span> <span class="tag">div</span><span class="class">.fileinputs</span> <span class="rules">{
+<span class="rule"><span class="attribute">position</span>:<span class="value"> relative</span></span>;
+<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">30px</span></span></span>;
+<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">300px</span></span></span>;
+}</span>
+<span class="tag">form</span><span class="class">.example</span> <span class="tag">input</span><span class="class">.file</span> <span class="rules">{
+<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">300px</span></span></span>;
+<span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;
+}</span>
+<span class="tag">form</span><span class="class">.example</span> <span class="tag">input</span><span class="class">.file</span><span class="class">.hidden</span> <span class="rules">{
+<span class="rule"><span class="attribute">position</span>:<span class="value"> relative</span></span>;
+<span class="rule"><span class="attribute">text-align</span>:<span class="value"> right</span></span>;
+`<span class="rule"><span class="attribute">-moz-opacity</span>:<span class="value"><span class="number">0</span> </span></span>;`
+<span class="rule"><span class="attribute">filter</span>:<span class="value"><span class="function">alpha</span>(opacity: <span class="number">0</span>)</span></span>;
+<span class="rule"><span class="attribute">opacity</span>:<span class="value"> <span class="number">0</span></span></span>;
+<span class="rule"><span class="attribute">z-index</span>:<span class="value"> <span class="number">2</span></span></span>;
+}</span>
+<span class="tag">form</span><span class="class">.example</span> <span class="tag">div</span><span class="class">.fakefile</span> <span class="rules">{
+<span class="rule"><span class="attribute">position</span>:<span class="value"> absolute</span></span>;
+<span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">0px</span></span></span>;
+<span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">0px</span></span></span>;
+<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">350px</span></span></span>;
+<span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;
+<span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;
+<span class="rule"><span class="attribute">z-index</span>:<span class="value"> <span class="number">1</span></span></span>;
+<span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">90%</span></span></span>;
+}</span>
+<span class="tag">form</span><span class="class">.example</span> <span class="tag">div</span><span class="class">.fakefile</span> <span class="tag">input</span> <span class="rules">{
+<span class="rule"><span class="attribute">margin-bottom</span>:<span class="value"> <span class="number">5px</span></span></span>;
+<span class="rule"><span class="attribute">margin-left</span>:<span class="value"> <span class="number">0</span></span></span>;
+}</span>
+</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;<span class="title">form</span> <span class="attribute">action</span>=<span class="value">"#"</span> <span class="attribute">class</span>=<span class="value">"example"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"fileinputs"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"file"</span> /&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">form</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
+<span class="keyword">var</span> W3CDOM = (<span class="built_in">document</span>.createElement &amp;&amp; <span class="built_in">document</span>.getElementsByTagName);
+
+<span class="function"><span class="keyword">function</span> <span class="title">initFileUploads</span>(<span class="params"></span>) </span>{
+    <span class="keyword">if</span> (!W3CDOM) <span class="keyword">return</span>;
+    <span class="keyword">var</span> fakeFileUpload = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);
+    fakeFileUpload.className = <span class="string">'fakefile'</span>;
+    fakeFileUpload.appendChild(<span class="built_in">document</span>.createElement(<span class="string">'input'</span>));
+    <span class="keyword">var</span> image = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>);
+    image.src=<span class="string">'button_select.gif'</span>;
+    fakeFileUpload.appendChild(image);
+    <span class="keyword">var</span> x = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'input'</span>);
+    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;x.length;i++) {
+        <span class="keyword">if</span> (x[i].type != <span class="string">'file'</span>) <span class="keyword">continue</span>;
+        <span class="keyword">if</span> (x[i].parentNode.className != <span class="string">'fileinputs'</span>) <span class="keyword">continue</span>;
+        x[i].className = <span class="string">'file hidden'</span>;
+        <span class="keyword">var</span> clone = fakeFileUpload.cloneNode(<span class="literal">true</span>);
+        x[i].parentNode.appendChild(clone);
+        x[i].relatedElement = clone.getElementsByTagName(<span class="string">'input'</span>)[<span class="number">0</span>];
+        x[i].onchange = x[i].onmouseout = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+            <span class="keyword">this</span>.relatedElement.value = <span class="keyword">this</span>.value;
+        }
+    }
+}
+initFileUploads();
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>31.<br>问题描述：<br>字体样式会影响根据 INPUT 元素的 “size” 属性计算的文本框宽度。其中包括 “font-family” 、 “font-size” 、 “font-weight” 、 “font-style” 、 “letter- spacing” 等。而在不同的浏览器中，INPUT[type=text/password] 的默认样式也是不同的。</p>
+<p>解决方案：<br>不要试图通过设置 “size” 属性使 INPUT[type=text/password] 元素在所有浏览器中的宽度一致，这是不可能的。在需要对这类元素做精确的控制时，应使用 CSS 的 ‘width’ 和 ‘height’ 特性。</p>
+<p>另外不同浏览器的默认字体的区别会导致文本框内文字表现的差异，最好为 INPUT 元素显式设置字体样式覆盖其默认值，以保证文本框在所有浏览器中有相同的呈现效果。</p>
+<p>32.问题描述：<br>密码框中的掩码用来覆盖密码明文，它没有相应的规范指定统一显示样式，因此导致不同系统与不同览器中密码框 “INPUT[type=password]” 的掩码字符均有很大的差异。</p>
+<p>解决方案：<br>由于掩码字符无法被修改，因此仅通过 CSS 统一密码输入框的掩码样式是不可能的。且这种差异可以忽略不计。</p>
+<p>这里给出两种解决思路：</p>
+<p>通过 CSS hack 方式对不同的浏览器设置不同的字体和字号，除去 Opera 外，可以减小掩码样式的差异。<br>或者使用 JavaScript 对普通的文本输入框做输入监听编程，用自定义掩码字符填充输入框来制做自定义密码输入框效果。 </p>
+<p>33.问题描述：<br>在 IE6 IE7 IE8(Q) 中，当给 FIELDSET 元素设置了一个固定的宽度时，该元素的表现更像是一个行内元素，虽然它的 ‘display’ 值仍是 ‘block’。</p>
+<p>解决方案：<br>这是一个 Bug，通过显式设置 FIELDSET 的样式为 ‘display:block’ 来修复。</p>
+<p>34.问题描述：<br>在所有版本IE中，”disabled” 属性对非表单控件元素同样有效果，被设置了 “disabled” 属性的元素的前景色将被渲染为灰色且带有白色阴影。”disabled” 属性可以被子元素继承。但对于表单控件元素，继承而来的 “disabled” 属性仅影响其外观渲染，并不能使其功能失效。</p>
+<p>解决方案：<br>应避免在非表单控件类元素上使用 “disabled” 属性。</p>
+<p>若需要使一个普通元素呈现出 IE 中为其设置 “disabled” 属性后的效果，可以用 CSS 设计其展现形式，以保证在所有浏览器下达到一致的显示。</p>
+<p>35。问题描述<br>各浏览器对于 INPUT、TEXTAREA 元素设置了 disabled 之后的效果处理不尽相同。IE 中会为文字设置一个阴影；Firefox 则保持文字前景色不变；Chrome Safari 会根据元素的背景色自动调整一个前景色；Opera 会将前景色变为 ‘#6D6D6D’。<br>但是在 Chrome Safari 中 disabled 属性由 true 转为 false 后，其前景颜色不会更新至最初的设定色，需要使元素重新获得焦点后浏览器才会对前景色进行更新。</p>
+<p>36.问题描述：<br>Firefox 对 TEXTAREA 元素的 “rows” 属性解释有误，实际显示的 TEXTAREA 元素的行数会比设置的属性值多 “1” 。</p>
+<p>解决方案：<br>当我们仅仅为 TEXTAREA 元素设置 “rows” 属性以控制其高度时，在 Firefox 中无法得到我们预期的效果。且其他浏览器对 “rows” 属性设置的元素高度也不尽相同，这一点 W3C 没有明确规范 “rows” 属性计算高度时的具体算法。</p>
+<p>如果要精确控制 TEXTAREA 元素的尺寸（高度）时，请避免使用 “rows” 属性改用 CSS 相关设定，以保证所有浏览器拥有统一的视觉样式。</p>
+<p>37。问题描述：<br>由于 BUTTON 标记内部可以嵌套其他 HTML 标记，相关规范中没有对其子元素内容溢出 BUTTON 时的情况做明确说明。这导致在 Firefox Opera 中，若 BUTTON 元素的子元素溢出 BUTTON 容器本身时，子元素溢出部分可以在按钮外被渲染。</p>
+<p>解决方案：<br>合理的设置 BUTTON 及其子元素的宽度及高度，避免出现子元素溢出 BUTTON 的情况。</p>
+<p>38。<br>问题描述：<br>单选按钮的 “name” 属性是用来为多个单选按钮分组的，”name” 属性值相同的按钮为同组，同组按钮中同一时刻仅可以有一个按钮呈现选中状态。</p>
+<p>如果 “name” 属性内值不符合 CDATA 规范范围，则不同浏览器对此非法值采取的处理方式不同。</p>
+<p>解决方案：<br>不要忘记书写单选按钮的 “name” 属性。</p>
+<p>虽然各浏览器都很宽容的处理了非空字符串值 “name” 属性的情况，仅在 “name” 属性值为空字符串时存在处理差异，但还是建议正确书写代码 —— “name” 属性值必须以字母 ([A-Za-z]) 开头 ，其后由任何字母、数字 ([0-9])、连字符 (“-“)、下划线 (“_”)、冒号 (“:”) 和句号 (“.”) 组成。</p>
+<p>39.解决方案：<br>不要忘记书写单选按钮的 “name” 属性。</p>
+<p>虽然各浏览器都很宽容的处理了非空字符串值 “name” 属性的情况，仅在 “name” 属性值为空字符串时存在处理差异，但还是建议正确书写代码 —— “name” 属性值必须以字母 ([A-Za-z]) 开头 ，其后由任何字母、数字 ([0-9])、连字符 (“-“)、下划线 (“_”)、冒号 (“:”) 和句号 (“.”) 组成。</p>
+<p>解决方案：<br>如果要实现类似上例中的客户端图片浏览功能建议读者查找 actionScript 3 相关资料来完成或先将图片存储到服务器端再显示到客户端。</p>
+<p>40。问题描述：<br>当页面中存在多个 FORM 元素，它们的 target 属性设置的目标窗口均不为当前页面 URI 时，若同时提交这些 FORM，Chrome Safari 中只能自动打开一个窗口，而其他浏览器会同时打开多个窗口。</p>
+<p>解决方案：<br>这个问题是 WebKit 核心浏览器的特性，如果需要同时提交多个表单，请将 target 的值分别设置具体窗口名，并使用 window.open 方法主动打开目标窗口，不要不依赖浏览器自动行为。</p>
+<p>如，可以将上例代码一中 “target=_blank” 修改为具体窗口名，并将脚本修改为：</p>
+<pre><code><span class="built_in">document</span>.getElementById(<span class="string">"submit"</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, forms = <span class="built_in">document</span>.forms; forms[i]; <span class="built_in">window</span>.open(<span class="string">'about:blank'</span>, forms[i].target), <span class="built_in">document</span>.forms[i++].submit());
+};
+</code></pre><p>41.问题描述:<br>IE6 Firefox Chrome(Q) Safari(Q) 中对 OPTION 元素设置 label 属性无效，浏览器仍然会使用 OPTION 元素中的内容渲染选项标签文本。</p>
+<p>解决方案:<br>尽量避免在 OPTION 元素上使用 label 属性，如果想替代 OPTION 原有的内容值，请使用 Javascript。</p>
+<p>42.问题描述:<br>IE6 IE7 中对 OPTION 和 OPTGROUP 元素设置 ‘disabled’ 属性无效，元素仍然是有效的。</p>
+<p>解决方案:<br>使用其他方式使想要 disabled 的 OPTION 和 OPTGROUP 无效，比如使用脚本动态删除 OPTION 或 OPTGROUP。</p>
+<p>43.问题描述:<br>Opera 中 TEXTAREA 元素默认的 ‘word-wrap’ 特性值为 ‘normal’，所以其 TEXTAREA 元素默认对于连续单词不会自动折行。<br>Firefox 中 TEXTAREA 元素的 wrap 属性设置为 hard 后，并不会按照 HTML5 草案中所述，将插入的换行符发送到服务端。</p>
+<p>解决方案:<br>若需要 TEXTAREA 元素对于连续单词实现自动折行，需要为 TEXTAREA 元素设定 word-wrap:break-word; 以消除各浏览器默认样式表的差异。</p>
+<p>若不需要 TEXTAREA 元素对于连续单词实现自动折行，针对非 IE 浏览器，将 ‘word-wrap’ 特性设置为 ‘normal’ 即可。通过所有浏览器均支持通过为 TEXTAREA 元素设置 wrap=”off” 达到相同的效果。off 值的含义参见 MSDN WRAP Attribute | wrap Property。</p>
+<p>44.<br>问题描述:<br>在 IE6 IE7 IE8(Q) 中 BUTTON 元素 type 属性的默认值不是规范规定的 submit 而是 button，则默认没有设定 type 属性时的 BUTTON 元素将创建一个普通按钮，而不是提交按钮。</p>
+<p>解决方案:<br>在使用 BUTTON 元素时应明确的为其设定 type 属性，避免因为浏览器默认属性值不同导致按钮类型出现差异。</p>
+<p>45.<br>问题描述:<br>对于 SELECT 元素在使用 OPTGROUP 元素对 OPTION 元素进行分组时，在各浏览器中由 OPTGROUP 元素创建的缩进量不同，这会导致未具体设定宽度的替换元素根据内在宽度显示后，各浏览器中显示效果不一。</p>
+<p>解决方案:<br>无法避免 OPTGROUP 元素产生的缩进值不同问题。但是可以通过为 SELECT 元素设定具体宽度，达到不因此问题影响布局的目的。</p>
+<p>如果确实需要精确控制选项组布局，只能有过使用脚本语言构造自定义选择框才能实现。</p>
+<p>46.问题描述:<br>在 Firefox 中，OPTION 元素默认的 ‘display’ 特性值为 ‘block’，即块级元素，故其可以设定宽度，且其设定的宽度可能会撑大其所在的 SELECT 元素。</p>
+<p>解决方案:<br>若 SELECT 元素没有明确设定宽度，则应避免为其 OPTION 元素设定一个可能撑大它的宽度。</p>
+<p>47.问题描述:<br>在 IE6 IE7 IE8 中 若 OPTION 元素仅包含属性名、没有属性值的 value 属性，则浏览器会将 OPTION 元素的内容文提交到服务端。而其他浏览器会将空字符串提交到服务端。</p>
+<p>解决方案:<br>在使用 OPTION 元素时避免出现其仅包含属性名、没有属性值的 value 属性的情况，若需要设定空的 value 属性值可以写做</p>
+<pre><code><span class="tag">&lt;<span class="title">OPTION</span> <span class="attribute">value</span>=<span class="value">""</span>&gt;</span>。
+</code></pre><p>48.问题描述:<br>在 IE 和 Opera 中，若 SCRIPT 元素设定了 src 属性但值为空，则其内脚本并不会被忽略，而是可以正常被解释执行。同时，一段内联脚本可以通过修改其所在 SCRIPT 元素的 src 属性引入新的外部脚本文件。</p>
+<p>解决方案:<br>不在设定了 src 属性的 SCRIPT 元素内编写脚本。<br>不通过脚本修改当前脚本所在 SCRIPT 元素的 src 属性。<br>以避免歧义的发生</p>
+<p>49.问题描述:<br>页面中存在外部 Javascript 文件引用时，其它 SCRIPT 标记内脚本程序段使用错误的 HTML 注释将导致此块内所有脚本程序以及此块后 SCRIPT 标记内程序无法运行。</p>
+<p>解决方案:<br>SCRIPT 标记内如有 HTML 注释标记，请仔细检查，注意他们的闭合情况。</p>
+<p>50.问题描述:<br>IE6 IE7 IE8(Q) 中会自动合并元素重复的 “style” 属性。</p>
+<p>解决方案:<br>不要依赖 IE 的容错机制，避免重复定义 HTML 元素属性。</p>
+<p>51.问题描述:<br>各浏览器均有其代码解析的容错机制存在，这些机制由浏览器厂商制定且并不统一，由此导致 IE6 IE7 IE8(Q) Firefox(Q) Opera(Q) 中的代码容错机制会自动修复被大括号包含的 style 属性的值。</p>
+<p>解决方案:<br>不要在 ‘style’ 的属性值中使用大括号等符号包含样式特性，直接书写样式代码即可避免此类问题。</p>
+<p>52.问题描述:<br>IE6 IE7 IE8(Q) 会忽略 LI DD DT 元素的结束标记，并且位于同一个父元素内的 LI 元素在文档树中会前后相连，位于 LI 元素之后的元素1会被修复到其前面最近的 LI DD DT 元素内，成为该 LI DD DT 元素的子元素。</p>
+<blockquote>
+<p>注 1: 所指元素不包括 LI、DD、DT、HTML、HEAD、BODY、TITLE 等。</p>
+</blockquote>
+<p>解决方案:<br>虽然 HTML 4.01 规范中没有明确指出列表元素的兄弟元素必须是同一列表元素；但是根据 HTML 语义化理念，建议不要在列表元素 LI DD DT 之后插入其他元素。</p>
+<h2 id="渲染-CSS相关">渲染-CSS相关</h2><p>53.<br>问题描述:<br>在 Chrome Safari 中，如果一段 CSS 代码（无论是外部文件还是页内嵌入）的 ‘@charset’ 规则之前有非空白字符或注释的内容存在，那么该规则之后的一个规则集将失效。</p>
+<p>解决方案:<br>要使用 ‘@charset’ 规则，请确保将其放在样式表的最开始，前边不能有任何字符。</p>
+<p>54.<br>问题描述:<br>如果一个外部 CSS 文件的编码与引入该文件的 HTML 文件的编码不一致，并且没有显式的声明该 CSS 文件的编码，在某些情况下会造成 CSS 的解析错误。</p>
+<p>解决方案：当 HTML 文件或 CSS 文件要引入一个不同编码的 CSS 文件时，要明确声明被引入的 CSS 文件的编码。</p>
+<p>如以上的举例，在 CSS 文件的开头加上一行1：</p>
+<pre><code><span class="at_rule">@<span class="keyword">charset</span> <span class="string">"GB2312"</span></span>;
+</code></pre><p>或者在各文件的 HTTP 响应头中声明该文件实际使用的编码。</p>
+<p>55。问题描述：<br>在 IE6 IE7 IE8(Q) 中，若 <uri> 类型的 CSS 值中包含换行符与制表符，则浏览器会忽略 URI 中的这些空白而获取到正确的资源。</uri></p>
+<p>解决方案：<br>避免在 <uri> 类型的 CSS 值出现任何空白。</uri></p>
+<p>56.问题描述：<br>若 CSS 代码中出现了表意空格 (U+3000)，如被当作了普通空白字符使用，则各浏览器的处理存在差异。</p>
+<p>解决方案：<br>正确地使用 CSS 的空白字符，避免使用表意空格 (U+3000)。</p>
+<p>57.<br>问题描述：<br>CSS 2.1 规范中描述的若干种选择器，在 CSS 1 历史规范中均无规定，这导致早期版本的浏览器，如： IE6 IE7(Q) IE8(Q) 浏览器不支持子选择器。</p>
+<p>解决方案：<br>避免在 IE6 IE7(Q) IE8(Q) 中使用子选择器。</p>
+<p>58.问题描述：<br>CSS 2.1 规范中描述的若干种选择器，在 CSS 1 历史规范中均无规定，这导致早期版本的浏览器，如： IE6 IE7(Q) IE8(Q) 中不支持相邻兄弟选择器。</p>
+<p>解决方案：<br>避免在非标准模式中对 IE7 以下版本使相邻兄弟选择器。</p>
+<p>59.问题描述：<br>CSS 2.1 规范中描述的若干种选择器，在 CSS 1 历史规范中均无规定，这导致早期版本的浏览器，如： IE6 IE7(Q) IE8(Q) 不支持属性选择器。</p>
+<p>解决方案：<br>避免在 IE6 IE7(Q) IE8(Q) 中使用属性选择器。</p>
+<p>60.<br>问题描述：<br>CSS 2.1 规范中描述的若干种选择器，在 CSS 1 历史规范中均无规定，这导致早期版本的浏览器，如： IE6 IE7(Q) IE8(Q) 不支持 ‘:first-child’ 伪元素。</p>
+<p>解决方案：<br>避免在 IE6 IE7(Q) IE8(Q) 中使用 ‘:first-child’ 伪元素。</p>
+<p>61.问题描述：<br>在 IE6 IE7(Q) IE8(Q) 中，A 标签的 :visited :hover :active 伪类声明即便没有以 L-V-H-A 的顺序书写，包含这些选择器的规则集中的、相同特性名的声明都会在相对应的行为发生时生效。而其他浏览器则严格按照规范规定的计算方式来确定选择器的针对性及它们的权重。</p>
+<p>解决方案：严格按照标准的建议，以 L-V-H-A 的顺序声明 A 标签的伪类，以保证在各浏览器中兼容。</p>
+<p>当需要以另一组针对性更强的规则集覆盖之前定义的 L-V-H-A 规则集时，请以 L-V-H-A 的顺序重新定义一遍。如以下代码：</p>
+<pre><code><span class="doctype">&lt;!DOCTYPE HTML&gt;</span>1
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span> /&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css">
+<span class="tag">a</span> <span class="rules">{<span class="rule"><span class="attribute">font</span>:<span class="value">bold <span class="number">50px</span> Verdana</span></span>;}</span>
+<span class="rule"><span class="attribute">a</span>:<span class="value">link {color:red</span></span>;}<span class="comment">/* [0,0,1,1] */</span>
+<span class="rule"><span class="attribute">a</span>:<span class="value">visited {color:green</span></span>;}  <span class="comment">/* [0,0,1,1] */</span>
+<span class="rule"><span class="attribute">a</span>:<span class="value">hover {color:blue</span></span>;}<span class="comment">/* [0,0,1,1] */</span>
+<span class="rule"><span class="attribute">a</span>:<span class="value">active {color:yellow</span></span>;}  <span class="comment">/* [0,0,1,1] */</span>
+<span class="tag">a</span><span class="class">.test</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value">black</span></span>;}</span><span class="comment">/* [0,0,2,0] */</span>
+</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+<span class="tag">&lt;<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"test"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>text<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>本意是要 class 为 ‘test’ 的 A 标签内的文字永远为黑色，但在 IE6 中将达不到目的。应将样式表部分修改为以下的形式：</p>
+<pre><code><span class="tag">a</span> {<span class="attribute">font</span>:bold <span class="number">50px</span> Verdana;}
+<span class="tag">a</span><span class="pseudo">:link</span> {<span class="attribute">color</span>:red;}<span class="comment">/* [0,0,1,1] */</span>
+<span class="tag">a</span><span class="pseudo">:visited</span> {<span class="attribute">color</span>:green;}  <span class="comment">/* [0,0,1,1] */</span>
+<span class="tag">a</span><span class="pseudo">:hover</span> {<span class="attribute">color</span>:blue;}<span class="comment">/* [0,0,1,1] */</span>
+<span class="tag">a</span><span class="pseudo">:active</span> {<span class="attribute">color</span>:yellow;}  <span class="comment">/* [0,0,1,1] */</span>
+<span class="tag">a</span><span class="class">.test</span><span class="pseudo">:link</span>, <span class="tag">a</span><span class="class">.test</span><span class="pseudo">:visited</span>, <span class="tag">a</span><span class="class">.test</span><span class="pseudo">:hover</span>, <span class="tag">a</span><span class="class">.test</span><span class="pseudo">:active</span> {<span class="attribute">color</span>:black;}<span class="comment">/* [0,0,2,1] */</span>
+</code></pre><p>62.问题描述：<br>IE6 IE7(Q) IE8(Q) 不支持 A 元素以外的其他元素的 ‘:hover’ 伪类。</p>
+<p>解决方案：<br>使用 JavaScript 绑定 ‘onmouseover’ 和 ‘onmouseout’（模仿 ‘:hover’）；<br>使用 Whatever:hover，该组件利用 IE 特有的 CSS 行为（behavior）及通过 JavaScript 来模拟 ‘:hover’ 伪类的效果。 </p>
+<p>63.<br>问题描述：<br>在 CSS 1 历史规范中 ‘:link ‘、’:visited ‘、’:hover’、 ‘:active’ 伪类仅作用于 A 标记中，这导致根据早期 CSS 版本实现的浏览器 IE6 IE7 IE8(Q) 不支持 A 元素以外的其他元素的 ‘:active’ 伪类。</p>
+<p>解决方案：<br>使用 JavaScript 绑定 onmousedown onmouseup 事件模仿 ‘:active’ 伪类效果；<br>使用 Whatever:hover，该组件利用 IE 特有的 CSS 行为（behavior）及通过 JavaScript 来模拟 ‘:active’ 伪类的效果。 </p>
+<p>64.问题描述:<br>CSS 2.1 规范中描述的 ‘:before’ 和 ‘:after’ 伪元素，在 CSS 1 历史规范中均无规定，这导致早期版本的浏览器，如：IE6 IE7 IE8(Q) 不支持他们。</p>
+<p>解决方案:<br>使用 JavaScript 或 jQuery 的 Pseudo Plugin 插件来模拟 ‘:before’ 及 ‘:after’ 伪元素的效果。</p>
+<p>使用 JavaScript 判断 IE6 IE7 IE8(Q) 并在其中通过脚本实现 ‘:before’ 及 ‘:after’ 伪元素的效果；<br>使用 jQuery 的插件 Pseudo Plugin，该组件利用 IE 特有的 CSS 行为（behavior）及 CSS 表达式来模拟 ‘:before’ 及 ‘:after’ 伪元素的效果。 </p>
+<p>65.问题描述:<br>特性值 ‘inherit’ 在 CSS 1 历史规范中并没有被定义，这导致使用历史版本 CSS 规范做参照的老旧浏览器 IE6 IE7 IE8(Q) 中不被支持这个特性值。</p>
+<p>其他浏览器对默认样式的显式性 ‘inherit’ 存在不同程度的支持缺陷。</p>
+<p>解决方案：使用标准模式渲染页面，并尽量避免使用 ‘inherit’ 值显式性继承样式设定、行内元素的默认 ‘display’ 特性值和 BUTTON 元素默认 ‘border’ 特性值，以兼容个浏览器。</p>
+<p>使用标准模式渲染页面；<br>在 IE6 IE7 退出舞台之前避免使用 ‘inherit’ 值显式性的继承样式设定；<br>在 IE8 内不使用 ‘inherit’ 值显式性继承行内元素的默认 ‘display’ 特性值；<br>在 Opera 内，不对使用 ‘inherit’ 值显式性继承 BUTTON 元素默认 ‘border’ 特性值。 </p>
+<p>66.</p>
+<p>问题描述：<br>在 Chrome 和 Safari 中，默认样式下的 B、STRONG 元素的 ‘font-weight’ 特性计算值可能会受到其继承来的 ‘font-weight’ 特性影响，在 IE8(S) 中，除 B、STRONG 外，H1~H6、TH 元素的 ‘font-weight’ 特性也会受影响。在其他浏览器中，则完全不受影响。</p>
+<p>解决方案：<br>最好为元素设置绝对明确的 ‘font-weight’ 特性的值，避免使用 bolder、lighter 这类相对量以及浏览器的默认样式。</p>
+<p>67.<br>问题描述：<br>IE6 IE7(Q) IE8(Q) 中不支持位于同一个选择器内的 ‘!important’ 规则，他可能会导致实际样式效果与预计不符。</p>
+<p>解决方案：<br>这是浏览器的 Bug 导致，无法通过常规方式解决。不过，一般 ‘!important’ 规则常常用于 CSS hack 以区分 IE6 与其他浏览器，其作为 hack 存在的意义已大于其本身的含义。</p>
+<p>问题描述：<br>IE6 IE7 IE8(Q) 负边距 (margin) 导致元素溢出 hasLayout 容器时显示异常。</p>
+<p>解决方案：<br>在确保元素的容器触发 hasLayout 的前提下，为该元素同时设置 ‘position:relative’ 和 ‘zoom:1’。</p>
+<p>首先需要保证容器在IE中触发 hasLayout 属性，可以通过zoom:1实现。</p>
+<p>在 IE7(S) 中，当使设置了负值 ‘margin’ 的元素的 hasLayout 属性为 ‘true’ ，即触发该元素的 hasLayout 特性后，此 Bug 现象消失，例如为该元素设置宽度或高度，或者在完全不影响该元素盒模型的情况下使用 zoom:1 来触发 hasLayout 从而消除此 Bug 。</p>
+<p>在 IE6 IE7(Q) IE8(Q) 中，仅仅触发 hasLayout 特性并不一定能消除此 Bug ，同时还需要为该元素设置 ‘position:relative’，即在完全不影响该元素盒模型的情况下使用 zoom:1 ‘position:relative’ 。</p>
+<p>68.问题描述：<br>在 WebKit 内核的浏览器中，当元素满足三个条件时，宽度计算不符合规范：</p>
+<p>元素的兄弟元素是浮动元素；<br>元素的 ‘width’ 特性值为 ‘auto’，’overflow’ 特性值不是 ‘visible’；<br>元素设置了与浮动同方向的 ‘margin’ 值(如：当 ‘float:left’ 时，设置 ‘margin-left’ 值，当 ‘float:right’ 时，设置 ‘margin-right’)。 </p>
+<p>解决方案：<br>1、为该创建了 BFC 的元素设置一个明确的宽度。<br>2、如果 ‘margin’ 值不小于浮动元素的 margin box 的宽时，去掉 ‘overflow:hidden’。 </p>
+<p>69.<br>问题描述：<br>Firefox 中 ‘display:table ‘的元素的外边距不会与包含块的外边距折叠</p>
+<p>解决方案：<br>由于 IE6 IE7 IE8(Q) Firefox 元素的 ‘margin’ 处理与 W3C 规范中的差异，若我们需要利用 “margin collapse” 达到某些布局效果时，在这几种浏览器中可能会由于没有发生 “margin collapse” 而出现 “额外边距” 的情况。所以应避免为表格设置上下边距，以及导致其 “margin collapse” 的发生，可以使用为表格的父元素使用 ‘padding’ 代替表格元素的 ‘margin’ 。</p>
+<p>70.问题描述:<br>IE6 IE7 IE8(Q) 中浮动元素和定位元素某些情况下会影响普通流中毗邻 ‘margin’ 的折叠</p>
+<p>解决方案:</p>
+<ol>
+<li>根据具体需求，调整 ‘margin’ 的位置和大小；</li>
+<li>使用 CSS hack 设置 IE 中的 ‘margin’ 大小，以避免 IE 跟其他浏览器的布局差异。 </li>
+</ol>
+<p>71.<br>问题描述:<br>在 IE6 IE7 IE8(Q)下，容器触发 hasLayout 导致其左浮动子元素 ‘margin-bottom’ 消失。</p>
+<p>解决方案:<br>为容器显式地设置高度。若容器高度不定，则要避免在触发了 hasLayout 的容器内的浮动子元素上设置 ‘margin-bottom’ 特性，可以通过为容器设置 ‘padding-bottom’ 达到相似的效果。</p>
+<p>只要不同时触发父元素hasLayout、子元素左浮动、左浮动子元素拥有非零的 margin-bottom 值，这三个条件中任意一项，均可解决此问题。</p>
+<p>72.问题描述:<br>IE6 IE7 IE8(Q) 中，若一个触发了 hasLayout 的元素其内第一个非空白节点 (即 children[0]) 为 TEXTAREA 元素 或者 type 属性值为 text、password、submit、reset、button、file 的 INPUT 元素，并且这个元素设定了 ‘margin-left’、’margin-right’ 特性，则 ‘margin-left’、’margin-right’ 特性指定的值会应用于其相应方向的 padding 上。</p>
+<p>解决方案:<br>在 INPUT、TEXTAREA 元素之前放一个触发了 hasLayout 的空 SPAN 元素。</p>
+<p>例如：</p>
+<pre><code><span class="tag">&lt;<span class="title">span</span> <span class="attribute">style</span>=<span class="value">"zoom:1;"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+</code></pre><p>73.问题描述:<br>因 IE6 IE7 IE8(Q) 中遵循老旧的 CSS 1 规范，当 ‘display’ 特性设定值为非 ‘inline’、’block’、’none’、’inline-block’、’list-item’ 时，’display’ 特性设置将遭到忽略。</p>
+<p>Opera 不支持非 CAPTION 元素的 ‘display:table-caption’ 特性值设置，Firefox 不支持 ‘display:run-in’ 设置，这些特性值设置也均将遭到忽略。</p>
+<p>解决方案:<br>尽量仅使用所有浏览器都支持的 ‘display’ 特性值：’inline’、’block’、’list-item’、’none’。在 IE6 IE7 IE8(Q) 中实现块元素的 ‘display:inline-block’ 特性值支持，需要先将块元素设置为行内元素，并设置可以在 IE6 IE7 IE8(Q) 内触发 haslayout 特性的专有特性 ‘zoom:1’。行内元素实现 ‘display:inline-block’ 特性值支持只需直接设置此特性值或同样使用 ‘zoom:1’ 即可。 </p>
+<p>74.问题描述:<br>在 IE6 IE7 IE8(Q) 中没有触发 hasLayout 并在其他浏览器中创建了 Block Formatting Context 的元素的表现会有差异。</p>
+<p>解决方案:<br>仅当一个元素即在 IE 早期版本中触发了 hasLayout，又在其他浏览器中创建了 block formatting context 时，才能避免上述问题的发生。即同时启用上述两者以保证各浏览器的兼容，或者相反，两者皆不启用。 </p>
+<p>使元素即生成了 block formatting context，又触发了 hasLayout<br>对于触发 hasLayout 的元素，通过 CSS 设置，使它产生 block formatting context；<br>生成 block formatting context 但是没有触发 hasLayout 的元素，通过设置 ‘zoom:1’，使其触发 hasLayout。<br>使元素即没有触发 hasLayout，又没有创建 block formatting context。 </p>
+<p>75.<br>问题描述:<br>当容器有足够的剩余空间容纳 BFC 的宽度时，所有浏览器都会将 BFC 放置在浮动元素所在行的剩余空间内。<br>在 IE6 IE7 IE8 Chrome Opera 中，当 BFC 的宽度介于 “容器剩余宽度” 与 “容器宽度” 之间时，BFC 会显示在浮动元素的下一行；在 Safari 中，BFC 则仍然保持显示在浮动元素所在行，并且 BFC 溢出容器；在 Firefox 中，当容器本身也创建了 BFC 或者容器的 ‘padding-top’、’border-top-width’ 这些特性不都为 0 时表现与 IE8(S)、Chrome 类似，否则表现与 Safari 类似。<br>在 IE6 IE7 IE8 Opera 中，当 BFC 的宽度大于 “容器宽度” 时，BFC 会显示在浮动元素的下一行；在 Chrome Safari 中，BFC 则仍然保持显示在浮动元素所在行，并且 BFC 溢出容器；在 Firefox 中，当容器本身也创建了 BFC 或者容器的 ‘padding- top’、’border-top-width’ 这些特性不都为 0 时表现与 IE8(S) 类似，否则表现与 Chrome 类似。</p>
+<p>解决方案:<br>合理地设置容器的宽度、浮动元素的宽度、BFC 的宽度的值，尽量保证 BFC 的宽度小于 “容器的剩余空间宽度” 。若需要 BFC 折行显示在新的一行上，可以通过 BFC 设置 ‘clear’ 特性等手段使其换行。</p>
+<p>76.问题描述:<br>在 IE6 IE7 IE8(Q) 中，一个零高度的浮动元素仍能阻挡与其向相同方向浮动的兄弟元素。</p>
+<p>解决方案:<br>如果希望一个浮动元素能阻挡与其向相同方向浮动的兄弟元素，请确保其高度不为零；否则，请隐藏该元素，以使页面布局在各浏览器中的表现一致。</p>
+<p>77.问题描述:<br>IE6 IE7 IE8(Q) 下，若浮动元素之前存在兄弟行内非浮动元素，IE 会将浮动元素所在的“当前行”认为是其前边的兄弟行内元素所产生的匿名框的底边，导致该浮动元素折行。</p>
+<p>解决问题：依具体情况可以使用三种方法：使用绝对定位模拟右浮动、使用 IE hack 专门在IE6 IE7 中设置负的上外边距、将右浮动的 SPAN 元素调整到所有非浮动 SPAN 元素之前。</p>
+<p>使用绝对定位（position:absolute）模拟右浮动（float:right）。 为了避免 IE6 IE7 的这个 BUG，可以不使用右浮动，而是用绝对定位及右偏移（right:XXXpx），如为右浮动元素设置 ‘position:absolute’ 及 ‘right:3px’ 替代 ‘float:right’，但这样做的代价是必须为父容器 DIV 元素设置 ‘postion:relative’，这么做仍然会破坏原文档结构。所以我们并不推荐此方法。<br>使用 IE hack 专门在IE6 IE7 中设置负的上外边距（margin-top:-XXXpx）。 既然此 Bug 为IE6 IE7 专有，则只需要在 IE6 IE7 下为右浮动元素设置一个负的上外边距即可，其他浏览器保持原样式。所以可以考虑使用只有 IE6 IE7支持的 hack 方式：在 CSS 特性前加星号 ‘<em>‘。如 </em>margin:-23px 5px 0 0，这样既可消除 IE6 IE7 中的 Bug，但是这么做是利用了浏览器的 Bug，并没有消除 Bug。在能有个更好的解决方法的时候，不推荐使用 CSS hack 来解决问题。<br>调整SPAN元素的位置。 通过上面总结的 Bug 触发条件，我们可以考虑直接调整父容器中 SPAN 子元素的位置来回避 IE6 IE7 中此 Bug，即将右浮动的 SPAN 元素调整到所有非浮动 SPAN 元素之前。</p>
+<pre><code>&lt;<span class="tag">div</span> style=<span class="string">"border:1px solid black; font:14px Verdana; padding:5px;"</span>&gt;
+&lt;<span class="tag">span</span> style=<span class="string">"background:tomato; float:right;"</span>&gt;Some text aligning <span class="attribute">right</span>&lt;/span&gt;
+&lt;<span class="tag">span</span> style=<span class="string">"background:gold;"</span>&gt;Text1&lt;/span&gt;
+&lt;<span class="tag">span</span> style=<span class="string">"background:lightblue;"</span>&gt;Text2&lt;/span&gt;
+&lt;<span class="tag">span</span> style=<span class="string">"background:pink;"</span>&gt;Text3&lt;/span&gt;
+&lt;<span class="tag">span</span> style=<span class="string">"background:greenyellow;"</span>&gt;Text4&lt;/span&gt;
+&lt;<span class="tag">span</span> style=<span class="string">"background:peru;"</span>&gt;Text5&lt;/span&gt;
+&lt;/div&gt; 
+</code></pre><p>78.问题描述：<br>在 IE6 IE7 IE8(Q) 下，为 ‘clear’ 元素设置负的 ‘margin-top’ 时， ‘clear’ 元素的顶部 ‘border-box’ 出现在了其之前浮动元素的底部 ‘margin-box’ 之上。</p>
+<p>解决方案：<br>尽量避免为 ‘clear’ 特性不为 none 的元素（即清理元素）设置 ‘margin-top’ 特性，尤其是负值。若需要为该元素设置正的 ‘margin-top’ 特性，可以将 ‘clear’ 元素当做容器，在其内部加入设置了 ‘margin-top’ 的元素。若需要为该元素设置负的 ‘margin-top’ ，可以为浮动元素设置负的 ‘margin-bottom’ 以缩小其 ‘margin-box’ ，提高了其底部 ‘margin-box’ 的位置，从而使 ‘clear’ 元素可以产生向上移动的效果。</p>
+<p>79.问题描述：<br>IE6 IE7 IE8(Q) 中，使用 ‘clear’ 特性清除浮动后，浮动元素的容器若没有触发 hasLayout，则其背景将会丢失。</p>
+<p>解决方案：<br>使丢失背景的容器触发 IE 浏览器特有的 hasLayout，如 ‘zoom:1’，或者设置宽度和高度。</p>
+<p>80.问题描述：<br>在IE6 IE7 IE8(Q)中，如果 clear 特性被设置在一个浮动的元素上，该浮动元素会与其前边的浮动元素放置在同一行。</p>
+<p>在IE6 IE7 IE8(Q)中，如果 clear 属性被设置到一个浮动的元素上，位于其后的浮动元素的外顶边高于该元素的外顶边。</p>
+<p>解决方案：<br>不要将 ‘clear’ 特性应用在浮动元素上，以免出现上述不兼容的问题。</p>
+<p>81.问题描述:<br>IE6 IE7 IE8(Q) 中一些拥有默认上下外边距的块级元素（浏览器设置的）在浮动，或触碰到触发了 hasLayout 特性的容器后，上下外边距会消失。</p>
+<p>解决方案:<br>用自定义的 ‘margin’ 取代浏览器的默认外边距样式。</p>
+<p>82.<br>问题描述:<br>IE 中触发了 hasLayout 的容器同时使用 ‘clear’ 特性清除浮动在某些情况下导致 ‘padding-top’ 渲染异常。</p>
+<p>解决方案:<br>方案1.不触发容器的 hasLayout 特性；<br>方案2. 若容器触发了hasLayout 特性，尽量不为其设置 ‘padding-top’ 特性；<br>方案3. 若容器触发了hasLayout 特性，且必须为容器设置 ‘padding-top’ 特性，可以考虑使用 ‘:after’ 的清除方式。 </p>
+<p>针对方案3的参考代码如下：</p>
+<pre><code><span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css">
+  <span class="id">#d</span><span class="pseudo">:after</span> <span class="rules">{ <span class="rule"><span class="attribute">display</span>:<span class="value">block</span></span>; <span class="rule"><span class="attribute">content</span>:<span class="value"><span class="string">""</span></span></span>; <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">0</span></span></span>; <span class="rule"><span class="attribute">clear</span>:<span class="value">both</span></span>; }</span>
+</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"d"</span> <span class="attribute">style</span>=<span class="value">"background:#CCC; width:100px; border:5px solid black; padding-top:20px;"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">style</span>=<span class="value">"float:left; width:50px; height:50px; background:#666; padding:0; margin:0;"</span>&gt;</span>FLOAT<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</code></pre><p>83.问题描述:<br>Firefox 浏览器对 TABLE 中绝对定位元素包含块的判定有错误，可能会导致绝对定位元素位置跟其他浏览器中有差异。</p>
+<p>解决方案:<br>这是 Firefox 的一个 bug，绝对定位元素无法根据 ‘display’ 特性是 ‘table’ 且是绝对定位的祖先元素定位。为达到相同的效果可以改变元素的 containing block 或者改变元素的定位方式。 </p>
+<p>为达到相同的效果，可以采用如下方式替代：</p>
+<p>改变元素的 containing block：让绝对定位元素相对于 TABLE 元素的单元格定位，即，在 TD 上设置 ‘position:absolute’ ；<br>改变元素的定位方式：把绝对定位元素的 ‘absolute’ 改为 ‘relative’ ，用相对定位。 </p>
+<p>84.问题描述:<br>若绝对定位元素没有设置其 ‘top’ 、 ‘right’ 、 ‘bottom’ 、 ‘left’ 特性，则这四个特性的值为默认的 ‘auto’ ，由于各浏览器对规范理解的差异，会导致页面布局差异</p>
+<p>解决方案:<br>首先对于绝对定位元素，应尽可能避免使其 ‘top’、’right’、’bottom’、’left’ 特性的值均为 ‘auto’。若必须这么做，则尽可能的保证绝对定位元素之前的兄弟元素为非浮动的块级元素。</p>
+<p>85.问题描述:<br>IE6 IE7(Q) IE8(Q) 不支持固定定位（position:fixed），对其设置 ‘position:fixed’ 无任何效果。</p>
+<p>解决方案:<br>在 IE6 IE7(Q) IE8(Q) 中为固定定位元素设置 ‘position:absolute’，再通过 JavaScript 脚本或者 CSS Expression 动态设置其偏移量。</p>
+<p>参考代码如下：</p>
+<pre><code><span class="tag">&lt;<span class="title">body</span> <span class="attribute">style</span>=<span class="value">"font:12px Arial; _background-attachment:fixed; _background-image:url(about:blank);"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">style</span>=<span class="value">"width:10000px; height:10000px;"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"d"</span> <span class="attribute">style</span>=<span class="value">"position:fixed; top:0; left:0; _position:absolute; _top:expression(offsetParent.scrollTop); _left:expression(offsetParent.scrollLeft); background:#ddd; width:100px; height:100px;"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+</code></pre><p>86.问题描述:<br>在 IE6 IE7 IE8(Q) 下，对于宽度超过容器的浮动元素，浏览器违背了浮动基本规则，导致其在浮动方向上溢出包含块。</p>
+<p>解决方案:<br>当文字方向为 ‘ltr’ 时应避免使右浮动元素的宽度超出其包含块的宽度。同样地，当文字方向为 ‘rtl’ 时应避免使左浮动元素的宽度超出其包含块的宽度。</p>
+<p>87.问题描述:<br>当定位元素的 ‘z-index’ 未设置时（默认为 auto），在 IE6 IE7 IE8(Q) 下将会创建一个新的局部层叠上下文。而在其它浏览器下，则严格按照规范，不产生新的局部层叠上下文。</p>
+<p>解决方案:<br>理解层叠上下文、层叠级别与 ‘z-index’ 之间的关系。在可能出现定位元素相互覆盖的情况时，明确指定定位元素的 ‘z-index’ 特性，避免此问题的出现。</p>
+<p>88.问题描述:<br>IE6 IE7 IE8(Q) 中溢出容器的浮动元素导致容器兄弟元素文本定位错误。</p>
+<p>解决方案:<br>及时地为容器清除浮动，并且确保浮动元素没有溢出容器。</p>
+<p>90.问题描述:<br>在 IE7(S) 中一个元素溢出的部分会被触发了 hasLayout 特性的元素遮盖。</p>
+<p>解决方案:<br>合理设置元素的 ‘width’、’height’ 和 ‘overflow’ 特性，避免内容溢出容器。</p>
+<p>91.问题描述:<br>在 IE6 IE7(Q) IE8(Q) 下，若包含块没有触发 hasLayout 特性，则其内参照其定位的绝对定位元素的偏移位置计算会出现问题。</p>
+<p>解决方案:<br>使包含块触发 hasLayout 特性。如 ‘zoom:1’ 或者设置明确的宽度、高度。</p>
+<p>92.问题描述:<br>IE6 IE7 IE8(Q) Firefox 不支持 ‘display:run-in’。</p>
+<p>解决方案:<br>‘display:run-in’ 特性目前用的地方不多，应用此特性的元素的最终状态 (inline-level 或 block-level) 要根据其上下文来判断，目前建议直接使用 ‘display:inline’ 或 ‘display:block’ 来固定元素的状态。</p>
+<p>93.问题描述:<br>包含块是行内元素，行内元素的绝对定位子元素位置，在各浏览器有差异。</p>
+<p>解决方案:<br>各浏览器对于行内元素的包含块范围计算有误，因此建议，应尽可能避免将行内元素边界作为计算包含块边界的情况出现。</p>
+<p>94.<br>问题描述:<br>在 IE6 IE7 IE8(Q) 中，TD/TH 及 TD 元素对设定 ‘position:relative’ 特性及偏移有效，其他均无效；<br>在 IE8(S) 中，TD/TH 及 CAPTION 元素及它们相对于 CSS 中 display 特性值对设定 ‘position:relative’ 特性及偏移有效，其他均无效；<br>在 Firefox 中，除 TABLE 之外的所有表格类元素以及它们相对于 CSS 中 display 特性值对设定 ‘position:relative’ 特性及偏移均无效<br>在 Chrome Safari 中，CAPTION 元素及它相对于 CSS 中 display 特性值 ‘caption’ 对设定 ‘position:relative’ 特性及偏移有效，其他均无效；<br>在 Opera 中，COL、COLGROUP 元素以及它们相对于 CSS 中 display 特性值对设定 ‘position:relative’ 特性及偏移无效，其他均有效。</p>
+<p>解决方案:<br>由于除 TABLE 之外的表格类元素以及它们相对于 CSS 中 display 特性值设定了相对定位后的效果 CSS2.1 规范中没有明确定义，而各浏览器的实现又存在很大差异。所以应避免为这些元素设定 ‘position:relative’。<br>若需要实现如冻结表格行或列的效果，可以考虑使用绝对定位其他 TABLE 元素的方式模拟。</p>
+<p>95.问题描述:<br>在 Safari Chrome 等使用 webkit 渲染引擎的浏览器中，’float:center’ 是合法值，他等同于 ‘float:none’ 设置，而其他浏览器则认为 ‘float’ 特性中 ‘center’ 是个非法值，遵循规范应忽略此处的 ‘float’ 特性设置。</p>
+<p>解决方案:<br>避免使用非法的 ‘float’ 特性值。</p>
+<p>96.<br>问题描述:<br>如果一个页面使浏览器工作在混杂模式下，那么当给一个设置了 ‘padding’ 或 ‘border-width’ 的非替换元素设置 ‘width’ 或 ‘height’ 以控制其尺寸时，这个元素在 IE 和其他览器中的实际尺寸将是不同的。</p>
+<p>解决方案<br>可以通过使用能触发标准模式下 (S) 的 DTD 或使用 CSS 3 的新特性 box-sizing。</p>
+<ol>
+<li><p>使用能触发标准模式 (S) 的 DTD<br>此问题引起的差异集中在各浏览器的混杂模式 (Q) 之间，当给同一个元素设置 ‘width’、’height’ 时，它们的应用位置在所有浏览器的标准模式 (S) 中全部一致。因此要避免受此问题的影响，最好的方式就是使用能触发标准模式 (S) 的 DTD，如：</p>
+<p> &lt;!DOCTYPE html PUBLIC “-//W3C//DTD HTML 4.0//EN”&gt;</p>
+<p> &lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Strict//EN” “<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;" target="_blank" rel="external">http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</a></p>
+<p> &lt;!DOCTYPE html&gt;</p>
+</li>
+<li><p>使用 CSS 3 的新特性：box-sizing<br>我们在开发过程中发现，有时候，如对页面中的大块区域进行布局时，将 ‘width’ 和 ‘height’ 作用到 border-box 是更灵活易用的，但 CSS 2.1 规范却规定了他们只能作用在 content-box 上。考虑到这个问题，CSS 3 草案中引入了一个新的特性：’box-sizing’。我们可以根据需要，通过给 ‘box-sizing’ 设置不同的值来选择 ‘width’ 和 ‘height’ 的作用位置。</p>
+</li>
+</ol>
+<p>目前的主流浏览器都支持这个特性，在各浏览器中的特性名如下：</p>
+<p>IE 8, Opera 8.5+ box-sizing<br>Firefox 1+ -moz-box-sizing<br>Safari 3+, Chrome -webkit-box-sizing </p>
+<p>‘box-sizing’ 有两个可选值：</p>
+<p>content-box<br>和 CSS 2.1 中的定义保持一致，在一个元素上定义的 ‘width’ 和 ‘height’（以及他们的 min/max 特性）将决定该元素的 content box 的尺寸。<br>该元素的 ‘padding’ 和 ‘border’ 在定义的 ‘width’ 和 ‘height’ 之外呈现。<br>border-box<br>在一个元素上定义的 ‘width’ 和 ‘height’（以及他们的 min/max 特性）将决定该元素的 border box 的尺寸。<br>该元素的 ‘padding’ 和 ‘border’ 在定义的 ‘width’ 和 ‘height’ 之内呈现。<br>关于 ‘box-sizing’ 的更多信息，请参考 CSS3 草案 7.1. ‘box-sizing’ property 中的内容。</p>
+<p>如果一个页面是在 IE6(Q) IE7(Q) IE8(Q) 的基础上设计的，即在有 IE 盒模型 Bug 时页面布局良好，但在其他浏览器中无 IE 盒模型 Bug 时布局混乱，又不想重构页面，那么简单快速的修复方式是通过设置 ‘box-sizing’ 的值为 ‘border-box’ 来使其他浏览器的尺寸作用位置与 IE6(Q) IE7(Q) IE8(Q) 相同。如：</p>
+<pre><code>* <span class="rules">{
+<span class="rule"><span class="attribute">box-sizing</span>:<span class="value">border-box</span></span>;
+<span class="rule"><span class="attribute">-moz-box-sizing</span>:<span class="value">border-box</span></span>;
+<span class="rule"><span class="attribute">-webkit-box-sizing</span>:<span class="value">border-box</span></span>;
+}</span>
+</code></pre><p>96.问题描述:<br>在 IE6 IE7 IE8 中，’width’ 或 ‘height’ 任意一个或两个都设置为 ‘0’ 的 IFRAME 元素是不可见的，而在其它浏览器中这样设置后的 IFRAME 元素仍可见。</p>
+<p>解决方案:<br>根据实际情况选择使用 ‘visibility:hidden’ 或者 ‘display:none’ 隐藏 IFRAME 。</p>
+<p>97.问题描述:<br>在 IE6 IE7 IE8(Q) 中，如果一个浮动元素的宽度是 shrink-to-fit，该元素的最终宽度可能比预期的小，并被尽可能的向上布局。</p>
+<p>解决方案:<br>这个问题的影响较大，避免该问题的最直接的方式是给浮动非替换元素指定一个宽度，而不使用其默认值 ‘auto’，从而避免其宽度为 shrink-to-fit，以使页面布局在各浏览器中的表现一致。</p>
+<p>98.问题描述:<br>在 Chrome Safari 中，若浮动元素之前存在一个非 inline 级元素（包括 block、table 等），且它们的包含块 ‘width’ 特性计算值为 auto，则包含块的 shrink-to-fit 宽度计算会出现错误。</p>
+<p>解决方案:<br>在容器为绝对定位、浮动或行内块元素且没有明确设定宽度时，若浮动元素之前出现非 inline 级元素，则要小心这个元素对容器 shrink-to-fit 宽度的影响。可以为容器明确的设定一个宽度。</p>
+<p>99.问题描述:<br>在 IE6 IE7 IE8(Q) 中，一个右浮动元素将尽可能的向右布局，并撑大其所有宽度为 ‘auto’ 的祖先级元素的宽度，直到遇到一个明确设定了宽度的祖先级元素为止。</p>
+<p>注：这种现象仅在该元素有宽度为 shrink-to-fit 的的祖先级元素时才可以看到。</p>
+<p>解决方案:<br>如果有一个右浮动元素，应注意避免其祖先级元素的宽度为 shrink-to-fit，即给它们设定一个明确的宽度。以使页面布局在各浏览器中的表现一致。</p>
+<p>100.<br>问题描述:<br>IE6 IE7 IE8 Opera 中对 shrink-to-fit 计算时会考虑浮动元素的宽度，这其中包含非替换浮动元素、非替换绝对定位元素、为替换行内块元素。</p>
+<p>解决方案:<br>尽量为非替换浮动元素、非替换绝对定位元素、非替换行内块元素显式地设置一个宽度，防止浏览器在 ‘width:auto’ 时对于 shrink-to-fit 的宽度计算方式不同造成布局上的差异。</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
