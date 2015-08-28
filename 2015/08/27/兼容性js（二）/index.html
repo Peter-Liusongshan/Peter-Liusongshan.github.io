@@ -244,12 +244,32 @@
         <div class="col-md-8 col-md-offset-2">
       		<h1 id="#">#</h1><p>101.问题描述：<br>IE6 及 IE7/8 的混杂模式下，非替换绝度定位元素当指定了 ‘left’ 及 ‘right’，而 ‘width’ 为默认值 “auto” 。此时浏览器无法正确地计算出 ‘width’ 的值，对于高度的计算也是如此。</p>
 <p>解决方案：<br>若能为非替换绝对定位元素设定固定的宽度及高度，则尽量不使用此方式自动计算绝对定位元素的 ‘width’ 及 ‘height’；若无法避免使用此方式，则可以通过判断浏览器，仅在 IE6 中使用 CSS Expression 控制绝对定位元素的宽度及高度。</p>
-<p>使用 CSS Expression 控制绝对定位元素的宽度及高度的参考代码如下：</p>
+<p>102.问题描述：<br>IE6 IE7 IE8(Q) 在超过一个行内元素排列生成行框时，识别行框的顶边和底边位置时会参照文本实际高度的顶边和底边尺寸，而不是行框内最高行内框的顶边和最底行内框的底边位置。</p>
+<p>解决方案：<br>为了取得正常布局，建议 ‘line-height’ 计算值设置永远大于 ‘font-size’ 计算值设置。</p>
+<p>103.问题描述：<br>IE6 IE7(Q) IE8(Q)不支持 ‘min-width’ 和 ‘max-width’ 特性</p>
+<p>解决方案：<br>使用 Javascript 实现 ‘min-width’ 和 ‘max-width’ 特性功能。</p>
+<p>104.问题描述：<br>IE6 IE7 IE8(Q) 中行内非替换元素中的非文本文字可能会撑高其高度。</p>
+<p>解决方案：<br>针对不同的需求，可以采取不同的解决方案，例如，将外层的行内元素改为一个块级元素、给外层行内元素设置 ‘display:inline-block’、给外层行内元素设置合适的 ‘font-size’ 值等。</p>
+<p>可供参考的解决方案如下：</p>
+<p>如果仅仅是需要高度一样，不需要考虑其对布局的影响，那么将外层的行内元素改为一个块级元素。<br>给外层行内元素设置 ‘display:inline-block’ ，这样支持 ‘inline-block’ 的浏览器会根据所包含的行内元素的高自动调整高度， IE6 E7 IE8(Q)中虽然不支持此属性，但是会触发上述 BUG ，也会撑开外层行内元素高度。<br>给外层行内元素设置合适的 ‘font-size’ 值。<br>参见</p>
+<p>105.问题描述：<br>不同浏览器内 ‘line-height’ 样式设置会影响 INPUT BUTTON 元素的显示高度。</p>
+<p>解决方案：<br>尽量避免使用 ‘line-height’ 为 INPUT[type=text]、INPUT[type=password]、INPUT[type=button]、INPUT[type=file]、input[type=submit] 和 BUTTON 标记设置 ‘line-height’，而应改用规范内说明的 ‘height’ 属性。 </p>
+<p>106.问题描述：<br>IE6 IE7 IE8(Q) 中触发 hasLayout 的空块级非替换元素的高度不为 0。</p>
+<p>解决方案：<br>如果想让一个触发了 hasLayout 的块级非替换元素的高度为 0，可以给这个空的块级非替换元素增加一个空的注释块：</p>
+<blockquote>
+<div style="zoom:1"><!-- --></div>
+
+</blockquote>
+<p>另外，不让元素在 IE 中触发 hasLayout 也可以避免此 BUG 。</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2015/08/28/兼容性js知识库/" style="float: left;">
+        ← Compatibility-JS（三）
+    </a>
     
     
     <a class="pull-right" href="/2015/08/25/根本原因/">

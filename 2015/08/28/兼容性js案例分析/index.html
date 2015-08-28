@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Peter-Liusongshan</title>
+  <title>Compatibility-JS（四） | Peter-Liusongshan</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -84,7 +84,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -222,17 +222,12 @@
         <!-- // End height spacing helper -->
 
         <!-- ============================ END Hero Image =========================== -->
-      <!-- ============================ Content =========================== -->
-
+      
 <section id="intro">
     <div class="container">
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/08/28/兼容性js案例分析/">Compatibility-JS（四）</a></h3>
-                    <span>
-                        <span class="post-meta">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
       <time datetime="2015-08-28T08:17:31.000Z" itemprop="datePublished">
           2015-08-28
       </time>
@@ -243,200 +238,105 @@
     
     
 </span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        案例分析浮动 Floats 是 CSS 中的一种布局方式。它的渲染位置在行框与包含块之间，这样就可以使行框内文字与浮动元素不重叠并且环绕它显示。在布局过程中也经常会使用它来达到左右并排布局的效果。但是，由于浮动特性，容器如果没有明确设定高度，会依照普通流内元素高度设置，这样就会导致脱离普通流的浮动元素溢出容器，影响其后元素布局。
-我们将现有已知的清楚浮动元素方法罗列下：
-采用一个HTML标签，以及css的clear属性，来手工清理浮动；
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/08/28/兼容性js案例分析/">More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
+                <h1>Compatibility-JS（四）</h1>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/08/28/兼容性js知识库/">Compatibility-JS（三）</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-08-28T08:17:14.000Z" itemprop="datePublished">
-          2015-08-28
-      </time>
-    
-    
-    | 
-    <a href='/tags/兼容性js随笔/'>兼容性js随笔</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        知识库1.兼容性问题目前市面上流行的浏览器有多种，这些浏览器在处理一个相同的页面时，表现或行为有时会有差异。
-这种差异可能很小，甚至不会被注意到；也可能很大，甚至造成在某个浏览器下无法正常浏览。
-我们把引起这些差异的问题统称为“浏览器兼容性问题”。
-浏览器的内核各品牌浏览器的内核是不同的，不同的内核处理同一段代码的时候思路不同。因此可以说，浏览器间内核的差异是产生兼容性问题的根本原因。
-“内核”也称为“引擎”。常见的浏览器及其渲染引擎（
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/08/28/兼容性js知识库/">More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/08/27/兼容性js（二）/">Compatibility-JS（二）</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-08-27T07:39:48.000Z" itemprop="datePublished">
-          2015-08-27
-      </time>
-    
-    
-    | 
-    <a href='/tags/兼容性js随笔/'>兼容性js随笔</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        #101.问题描述：IE6 及 IE7/8 的混杂模式下，非替换绝度定位元素当指定了 ‘left’ 及 ‘right’，而 ‘width’ 为默认值 “auto” 。此时浏览器无法正确地计算出 ‘width’ 的值，对于高度的计算也是如此。
-解决方案：若能为非替换绝对定位元素设定固定的宽度及高度，则尽量不使用此方式自动计算绝对定位元素的 ‘width’ 及 ‘height’；若无法避免使用此方式，则可以通过判断浏览器，仅在 IE6 中使
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/08/27/兼容性js（二）/">More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/08/25/根本原因/">Compatibility-JS（一）</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-08-25T14:31:16.000Z" itemprop="datePublished">
-          2015-08-25
-      </time>
-    
-    
-    | 
-    <a href='/tags/兼容性js随笔/'>兼容性js随笔</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        根本原因1.问题描述
-1、注释内容含中横线（-）在 Firefox 中可能会使中间内容丢失。
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="案例分析">案例分析</h1><p>浮动 Floats 是 CSS 中的一种布局方式。它的渲染位置在行框与包含块之间，这样就可以使行框内文字与浮动元素不重叠并且环绕它显示。在布局过程中也经常会使用它来达到左右并排布局的效果。但是，由于浮动特性，容器如果没有明确设定高度，会依照普通流内元素高度设置，这样就会导致脱离普通流的浮动元素溢出容器，影响其后元素布局。</p>
+<p>我们将现有已知的清楚浮动元素方法罗列下：</p>
+<p>采用一个HTML标签，以及css的clear属性，来手工清理浮动；<br>采用伪类:after，动态建立一个块元素，设定 clear 属性，清理之前的浮动元素；<br>采用CSS overflow 非 visible 值(overflow:auto/overflow:hidden)设定使父容器包含浮动元素；<br>采用display:table/display:table-cell 等table系列属性将父元素变成 table 形式自动包含浮动元素；<br>使用 TABLE 以及 TD 标签作为浮动元素容器；<br>采用 float:left/float:right 方式将父元素同样浮动，就可以包含浮动内容；<br>在 IE 6/7 的标准文档模式中设置 “width/height/zoom” 等样式来自动清理浮动。<br>对这些方式我们一一来对照 CSS 标准（或者浏览器特性）来解释下。</p>
+<p>使用 clear 样式清除<br>样例：</p>
+<pre><code><span class="class">.clear-float</span> <span class="rules">{<span class="rule"><span class="attribute">clear</span>:<span class="value">both</span></span>;}</span> 
+</code></pre><p>clear 属性是 CSS 1 就提供的用来清除浮动的样式，设置了 clear 属性的元素，其上边框位置会紧贴浮动元素的 margin-bottom 边界位置渲染，忽略其 margin-top 设置。这样，父容器高度未设定(值是 auto)时，由于定义的清理浮动样式元素所在位置处于浮动元素之下，容器计算后的实际高度就包含了浮动元素。</p>
+<p>使用伪元素 :after 清除<br>样例：</p>
+<pre><code><span class="rule"><span class="attribute">.after-clear-float </span>:<span class="value">after{content:””</span></span>; <span class="rule"><span class="attribute">display</span>:<span class="value">block</span></span>; <span class="rule"><span class="attribute">clear</span>:<span class="value">both</span></span>;}
+</code></pre><p>:after 伪元素是在 CSS 2 规范内提出的，IE 6/7 并不支持。它的作用是在指定该伪元素元素内，所有子元素最后自动生成一个伪元素，并可以为这个伪元素设定样式。在设定样式中，使用 clear 属性即可达到与手工添加元素指定清理的效果。</p>
+<p>注意兼容问题：<br>:after 伪元素在 IE6/7 中并不被支持，这是由于之前的 IE 版本仅完全实现了 CSS 1 规范标准，以及一部分 CSS 2 规范，恰巧 :after 伪元素不在实现之例。</p>
+<p>使用 overflow 清除<br>样例：</p>
+<pre><code><span class="class">.overflow-clear-float</span> <span class="rules">{<span class="rule"><span class="attribute">overflow</span>:<span class="value">hidden</span></span>;}</span>
+</code></pre><p>或者<br>    .overflow-clear-float {overflow:auto;}</p>
+<p>overflow 样式值为 非 visilbe 时，实际上是创建了 CSS 2.1 规范定义的 Block Formatting Contexts。创建了它的元素，会重新计算其内部元素位置，从而获得确切高度。这样父容器也就包含了浮动元素高度。这个名词过于晦涩，在 CSS 3 草案中被变更为名词 Root Flow，顾名思义，是创建了一个新的根布局流，这个布局流是独立的，不影响其外部元素的。实际上，这个特性与 早期 IE 的 hasLayout 特性十分相似。</p>
+<p>注意兼容问题：<br>Block Formatting Contexts 概念是在 CSS 2.1 规范内被提出。因此 IE6/7 中并不被支持，这是由于之前的 IE 版本仅完全实现了 CSS 1 规范标准，以及一部分 CSS 2.0 规范。在 IE 7 中，overflow 值为非 visible 时，可以触发 hasLayout 特性。这同样使得 IE 7 同样可以使容器包含浮动元素。</p>
+<p>使用 display:table 清除<br>样例：</p>
+<pre><code>.<span class="keyword">table</span>-<span class="keyword">clear</span>-float {<span class="keyword">display</span>:<span class="keyword">table</span>}
+</code></pre><p>或者<br>    .table-clear-float {display:table-cell}</p>
+<p>当元素 display 值被设定为 table 或 table-cell 时，同样也创建了 CSS 2.1 规范定义的 Block Formatting Contexts。这样父容器也就包含了浮动元素高度。</p>
+<p>注意兼容问题：<br>除去 Block Formatting Contexts 在 IE 6/7 中的兼容性外，display:talbe 系列样式设定也不在 IE6/7 的支持范围之内。</p>
+<p>使用表格类元素作为浮动元素容器<br>样例：</p>
+<blockquote>
+<table><br>  <tr><br>     <td><br>       <div style="”float:left”"></div><br>    </td><br>  </tr><br></table>
 
-解决办法：按标准推荐的方法写注释标签，如
-&lt;!--  //此处 "&lt;!" 和 "--" 之间尽量不要有空格。
-这里是注释内容，应避免在注释内容中出现两个或以上的“-”字符。–&gt;  //此处 “–” 和 “&gt;” 之间避免有空格。
+</blockquote>
+<p>当使用 TABLE TD TH 等 TABLE 系列标签时， 元素的 display 值实际上说是 display: table 系列，这同样也创建了 CSS 2.1 规范定义的 Block Formatting Contexts。这样父容器也就包含了浮动元素高度。同时在 IE 6/7 中，TABLE TD TH 等 TABLE 系列标签天然拥有 haslayout 特性，这也可以使容器自动包含浮动元素高度。</p>
+<p>使用浮动父元素清除<br>当元素设置 float:left/float:right 时 ，同样也创建了 CSS 2.1 规范定义的 Block Formatting Contexts。这样父容器也就包含了浮动元素高度。同时，这个样式也会在 IE 6/7 内触发 hasLayout 特性，拥有这个特性的元素也可以计算出浮动元素的高度，使父元素包含他们。</p>
+<p>实际问题：<br>虽然这种方式并没有兼容问题，但实际使用中并不推荐。因为很容易推断出，页面中只要有一个浮动元素，使用该方法清理浮动将不可避免的使页面所有元素都浮动才可以达到预期效果。</p>
+<p>触发 hasLayout 清除<br>样例：</p>
+<pre><code><span class="tag">haslayout-clear-float</span>:{<span class="attribute">width</span>:<span class="number">1px</span>}
+</code></pre><p>或<br>    .haslayout-clear-float:{height:1px}<br>或<br>    .haslayout-clear-float:{zoom:1}</p>
+<p>‘Layout’ 是 IE 的专有概念，它决定了元素如何对其内容进行定位和尺寸计算，与其他元素的关系和相互作用，以及对应用还有使用者的影响。</p>
+<p>‘Layout’ 可以被某些 CSS property（特性）不可逆的触发，而某些 HTML 元素本身就具有 layout 。</p>
+<p>‘Layout’ 在 IE 中可以通过 hasLayout 属性来判断一个元素是否拥有 layout ，如 object.currentStyle.hasLayout 。</p>
+<p>‘Layout’ 是 IE 浏览器渲染引擎的一个内部组成部分。在 IE 浏览器中，一个元素要么自己对自身的内容进行组织和计算大小， 要么依赖于包含块来计算尺寸和组织内容。为了协调这两种方式的矛盾，渲染引擎采用了 ‘hasLayout’ 属性，属性值可以为 true 或 false。 当一个元素的 ‘hasLayout’ 属性值为 true 时，我们说这个元素有一个布局（layout），或拥有布局</p>
+<p>默认拥有布局的元素： </p>
+<blockquote>
+<p><html>, <body></body></html></p>
+<p><table>, <tr>, <th>, </th><td><br><img></td></tr></table></p>
+<p><hr></p>
+<p><input>, <button>, </button><select>, </select><textarea>, <fieldset>, <legend></legend></fieldset></textarea></p>
+<p><iframe>, <embed>, <object>, <applet></applet></object></iframe></p>
+<marquee>
 
-2.各浏览器对于字符编码别名支持的宽泛程度有差异，当指定了浏览器无法识别的字符编码别名时，
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/08/25/根本原因/">More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
+</marquee></blockquote>
+<p>可触发 hasLayout 的 CSS 特性： </p>
+<blockquote>
+<p>display: inline-block</p>
+<p>height: (除 auto 外任何值)<br>width: (除 auto 外任何值)<br>float: (left 或 right)<br>position: absolute<br>writing-mode: tb-rl<br>zoom: (除 normal 外任意值)</p>
+<p>zoom: (除 normal 外任意值)<br>IE7 还有一些额外的属性(不完全列表)可以触发 hasLayout ：<br>min-height: (任意值)<br>min-width: (任意值)<br>max-height: (除 none 外任意值)<br>max-width: (除 none 外任意值)<br>overflow: (除 visible 外任意值，仅用于块级元素)<br>overflow-x: (除 visible 外任意值，仅用于块级元素)<br>overflow-y: (除 visible 外任意值，仅用于块级元素)<br>position: fixed</p>
+</blockquote>
+<p>IE6 以前的版本（也包括 IE6 及以后所有版本的混杂模式，其实这种混杂模式在渲染方面就相当于 IE 5.5）， 通过设置任何元素的 ‘width’ 或 ‘height’（非auto）都可以触发 hasLayout ； 但在 IE6 和 IE7 的标准模式中的行内元素上却不行，设置 ‘display:inline-block’ 才可以。<br>注意兼容问题：<br>haslayout 特性仅 IE 支持，其他浏览器并无此特性。可以依靠计算布局清理浮动的 haslayout 特性仅在 IE 6/7 中存在，IE8 之后将使用 CSS 2.1 的 Block Formatting Contexts 定义来达到同样效果。</p>
+<p>注：IE hasLayout 特性厂商说明链接：hasLayout Property</p>
+<p>以上内容是常见清理浮动手段生效的规范（和浏览器厂商特性）原理。我们希望页面开发者们，根据他们的兼容性特征以及实际情况来组合使用，以便达到实际项目目标。</p>
+<p>DOCTYPE 的诞生</p>
+<p>DOCTYPE，或者称为 Document Type Declaration（文档类型声明，缩写 DTD）。通常情况下，DOCTYPE 位于一个 HTML 文档的最前面的位置，位于根元素 HTML 的起始标签之前。因为浏览器必须在解析 HTML 文档正文之前就确定当前文档的类型，以决定其需要采用的渲染模式，不同的渲染模式会影响到浏览器对于 CSS 代码甚至 JavaScript 脚本的解析。尤其是在 IE 系列浏览器中，由 DOCTYPE 所决定的 HTML 页面的渲染模式至关重要。</p>
+<p>首先看看当一个 HTML 文档在没有 DOCTYPE 时，页面在各浏览器中会如何渲染及解析。我们尝试生成一个在最顶端没有 DOCTYPE 的 HTML 文档：</p>
+<p>规范定义<br>querySelector 和 querySelectorAll 方法是 W3C Selectors API Level 1 规范中定义的。他们的作用是根据 CSS 选择器规范，便捷定位文档中指定元素。</p>
+<p>目前几乎主流浏览器均支持了他们。包括 IE8(含) 以上版本、 Firefox、 Chrome、Safari、Opera。</p>
+<p>querySelector 和 querySelectorAll 在规范中定义了如下接口：</p>
+<pre><code><span class="class"><span class="keyword">module</span> <span class="title">dom</span> {</span>
+</code></pre><blockquote>
+<p>[Supplemental, NoInterfaceObject]</p>
+<p>interface NodeSelector {<br>  Element querySelector(in DOMString selectors);<br>  NodeList querySelectorAll(in DOMString selectors);<br> };<br> Document implements NodeSelector;<br> DocumentFragment implements NodeSelector;<br> Element implements NodeSelector;<br>};</p>
+</blockquote>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/08/25/兼容性js根本原因/">Compatibility-JS（一）</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-08-25T14:31:16.000Z" itemprop="datePublished">
-          2015-08-25
-      </time>
-    
-    
-    | 
-    <a href='/tags/兼容性js随笔/'>兼容性js随笔</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        根本原因渲染-HTML相关1.问题描述
-1、注释内容含中横线（-）在 Firefox 中可能会使中间内容丢失。
-
-解决办法：按标准推荐的方法写注释标签，如
-&lt;!--  //此处 "&lt;!" 和 "--" 之间尽量不要有空格。
-这里是注释内容，应避免在注释内容中出现两个或以上的“-”字符。–&gt;  //此处 “–” 和 “&gt;” 之间避免有空格。
-
-2.各浏览器对于字符编码别名支持的宽泛程度有差异，当指定了浏览器无法识别
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/08/25/兼容性js根本原因/">More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
         <nav class="pagination" role="pagination">
-          
-          <a class="pull-right" href="/page/2/">Older Posts →</a>
-        </nav>
+    
+    
+    <a class="pull-right" href="/2015/08/28/兼容性js知识库/">
+        Compatibility-JS（三） →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2015/08/28/兼容性js案例分析/" data-title="Compatibility-JS（四）" data-url="http://yoursite.com/2015/08/28/兼容性js案例分析/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"duoshuo_name"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
     </div>
 </section>
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>每一个不起舞的日子里都是对生命的辜负。</p>
-        </div>
-    </div>
-</section>
-<!-- ============================ END Content =========================== -->
+
 
       
 <!-- ============================ Footer =========================== -->

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>Compatibility-JS（三） | Peter-Liusongshan</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Peter-Liusongshan">
+    <meta name="author" content="Peter-Liusongshan">
+    <meta name="description" content="站在巨人的肩膀上，你才能看的更远！" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Peter-Liusongshan" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">Think</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">Practice</a></li>
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">Success</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Peter-Liusongshan</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <!-- ============================ Hero Image =========================== -->
+
+        <section id="hero" class="scrollme">
+            <div class="container-fluid element-img" style="background: url(/img/1.jpg) no-repeat center center fixed;background-size: cover">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                        <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                            <div>
+                            	
+                                <h2>WELCOME TO MY <span>WORLD</span>!</h2>
+                                <p></p>
+				    			
+                                <h2></h2>
+                                <p>当你站在巨人的肩膀上你会发现，这个世界很奇妙。</p>
+				    			
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // .col-md-12 -->
+                </div>
+                <div class="herofade beige-dk"></div>
+            </div>
+        </section>
+
+        <!-- Height spacing helper -->
+        <div class="heightblock"></div>
+        <!-- // End height spacing helper -->
+
+        <!-- ============================ END Hero Image =========================== -->
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2015-08-28T08:17:14.000Z" itemprop="datePublished">
+          2015-08-28
+      </time>
+    
+    
+    | 
+    <a href='/tags/兼容性js随笔/'>兼容性js随笔</a>
+    
+    
+</span>
+                <h1>Compatibility-JS（三）</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="知识库">知识库</h1><h2 id="1-兼容性问题">1.兼容性问题</h2><p>目前市面上流行的浏览器有多种，这些浏览器在处理一个相同的页面时，表现或行为有时会有差异。</p>
+<p>这种差异可能很小，甚至不会被注意到；也可能很大，甚至造成在某个浏览器下无法正常浏览。</p>
+<p>我们把引起这些差异的问题统称为“浏览器兼容性问题”。</p>
+<p>浏览器的内核<br>各品牌浏览器的内核是不同的，不同的内核处理同一段代码的时候思路不同。因此可以说，浏览器间内核的差异是产生兼容性问题的根本原因。</p>
+<p>“内核”也称为“引擎”。常见的浏览器及其渲染引擎（又称排版引擎）、脚本引擎的列表1如下：</p>
+<blockquote>
+<p>Browser Name Layout Engine ECMAScript Engine<br>Internet Explorer 6 - 8 Trident JScript<br>Firefox 3.5 Gecko TraceMonkey<br>Chrome 4 WebKit V8<br>Safari 4 WebKit SquirrelFish Extreme<br>Opera 10 Presto Carakan </p>
+</blockquote>
+<p>浏览器的工作模式<br>工作模式简介<br>浏览器的工作模式常被称为“渲染模式”。实际上浏览器不同的工作模式不仅对渲染有影响，对代码的解析以及脚本的行为也同样有影响。</p>
+<p>从更广泛的角度来看，浏览器的工作模式的差异不仅体现在处理 HTML 页面的时候，处理 XML 及一些非 WEB 内容时也有模式上的差异，但本文仅讨论浏览器在处理 HTML 页面时工作模式。1</p>
+<p>工作模式的来源及变迁<br>微软于 2001 年 8 月 27 日发布的 IE6（Internet Explorer 6）增强了对 CSS1 的兼容1，这使得 IE6 对 CSS 的解析及渲染与它的前一个版本 IE5.5 有了很大的差别，如对盒模型的理解2、表格尺寸的算法3等。</p>
+<p>为了保持良好的向后兼容性，微软为用户提供了一个“开关”，来决定浏览器的工作模式4，这个“开关”就是页面顶部的 DTD。<br>某些 DTD 将使 IE6 工作在“标准兼容模式”（即“标准模式”），这种模式使用了 IE6 最新的处理方式，包括对 CSS1 的兼容及一些 DHTML 方面的增强。<br>而另一些 DTD，包括不设置 DTD 将使 IE6 工作在“向后兼容模式”（即“混杂模式”），这种模式对页面的处理是与 IE5.5 保持一致的，这样就可以保证对一些在 IE5.5 中表现良好的页面在 IE6 中也能达到同样的效果。<br>微软在后续推出的 IE7、IE8 中，也使用了上述“开关”，与 IE6 一样，在 IE7、IE8 的“混杂模式”下，对页面处理方式仍与 IE5.5 一致。因此可以说，IE 系列的“混杂模式”，将浏览器的行为冻结在了 IE5.5 这个版本，虽然 IE 各版本的混杂模式也略有区别5，但它们的本意都是向后兼容。 </p>
+<p>随着时间的推进和标准的进步，IE6、IE7 的“标准模式”逐渐已经变得不够标准了，2009年3月19日发布的 IE8 重新定义了“标准模式”，再次增强了对标准规范的支持，同时为了保持对 IE7 的兼容，IE8 增加了一种工作模式：“接近标准模式”。于是，IE8 的工作模式就分成了三种：“标准模式”、“接近标准模式”和“混杂模式”6。</p>
+<p>目前所有主流浏览器对于向后兼容问题的处理都与 IE 系列一样，提供了不同的模式7来保证向后兼容。</p>
+<p>浏览器的工作模式就是在这种背景下诞生的，它很好的解决了浏览器对标准支持上的不断增强及对一些错误的修复而导致的向后兼容问题，但也将浏览器在不同情况下的表现及行为变得更加复杂多样。</p>
+<p>通过以上的内容，我们可以得出结论：如果一个页面能使各浏览器都工作在“标准模式”下，那么各浏览器都将尽量兼容标准，因此各浏览器之间表现出的差异是很少的。相反，如果一个页面使各浏览器都工作在“混杂模式”下，那么各浏览器都将尽量向后兼容，因此各浏览器之间表现出的差异将会最大化。</p>
+<p>注：</p>
+<p>关于 IE6 的更多信息，请参考 维基百科 - Internet Explorer 6。<br>关于此问题，请参考 W3H - RD8001: 各浏览器中 ‘width’ 和 ‘height’ 在某些元素上的作用位置有差异。<br>关于此问题，请参考 W3H - RE8017: IE Firefox Opera 的混杂模式对于 TD 元素的百分比高度计算错误。<br>关于 IE6 对浏览器工作模式的区分的详细信息，请参考 MSDN - CSS Enhancements in Internet Explorer 6。<br>比如 IE6 的混杂模式有著名的“双边距 Bug”，而 IE7 和 IE8 的混杂模式则没有这个问题。<br>关于此问题，请参考 W3H - RX2001: IE5.0 IE5.5 IE6 中浮动元素在某些情况下会有双倍外边距。<br>document.compatMode 最先出现在 IE6 中，它的值标示了浏览器的工作模式，“标准模式”返回“CSS1Compat”，“混杂模式”返回“BackCompat”。这一做法到目前为止仍被所有主流浏览器所采用。<br>需要注意的是：在后来出现的“接近标准模式”中，document.compatMode 的返回值与“标准模式”一致，为“CSS1Compat”。也就是说，不能通过 document.compatMode 来详细区分浏览器的工作模式，只能用来判断浏览器是否工作在“混杂模式”下。<br>因为“标准模式”与“接近标准模式”之间的差异并不大，所以这个方法至今仍被广泛使用。<br>关于 Firefox 中 DTD 与浏览器工作模式的详细信息，请参考 Mozilla’s DOCTYPE sniffing，关于 Opera 中 DTD 与浏览器工作模式的详细信息，请参考 DOCTYPE Switches support in Opera Presto 2.6。 </p>
+<h2 id="建议">建议</h2><p>在编写一个页面时，要使用可以触发各浏览器“标准模式”的DTD，并书写符合规范的代码，以保证您的页面在各浏览器中可以最大程度的兼容。</p>
+<h2 id="2-CSS_声明和特性">2.CSS 声明和特性</h2><p>CSS 声明( Declarations )</p>
+<p>CSS 声明1可以为空，或者由 CSS 特性( property )，后加一个冒号 “:”，跟着是一个特性的值构成。中间可以有空格将它们隔开。</p>
+<p>可用以下方式表达：</p>
+<blockquote>
+<p>property : value;</p>
+</blockquote>
+<p>其中 property 指代的是所有 CSS 特性，value 指的是这个特性的值。</p>
+<p>例如：</p>
+<blockquote>
+<p>p{<br>    height:100px;<br>}</p>
+</blockquote>
+<p>其中，height 是特性，而 “100px” 是值。CSS 声明的基础是 CSS 特性。</p>
+<p>CSS 特性( properties )<br>CSS 是用于（增强）控制网页样式并允许将样式信息与网页内容分离的一种标记性语言。 其中的样式信息，其实就是用户对于如何设置元素渲染方式的设置信息。</p>
+<p>自提倡 Web 数据与分离理念以来，CSS 作为不可或缺的一部分参与了这项伟大运动。</p>
+<p>以 TABLE 为例，设置它的高度，可以表示为</p>
+<pre><code><span class="tag">&lt;<span class="title">table</span> <span class="attribute">height</span>=<span class="value">"100"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">tr</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">td</span>&gt;</span>hello<span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">table</span>&gt;</span>
+</code></pre><p>这种表示方式的坏处是不利于 TABLE 元素的统一管理，比如，页面上有 1 万个 TABLE 元素， 我已经用了 1 万次粘贴(当然，你可以借助工具)，将所有的高度置成了 100，如果要改成150，那么，又是 1 万次。 利用 CSS 完全可以摆脱这种窘境，修改 TABLE 的高度，只需这样：</p>
+<pre><code>&lt;style type=<span class="string">"text/css"</span>&gt;
+<span class="title">table {</span>
+    height: 100px;
+}
+
+&lt;tr&gt;
+    &lt;td&gt;hello&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+</code></pre><p>其中的 height 就是 CSS 特性的一种，每个 CSS 特性都有一个名字，可以赋予它 CSS 值，以达到不同的渲染效果。你可以让所有的 TABLE 变得更高，设置它的 height 特性的值为 “150px” 就可以了。</p>
+<p>这里有一个W3C 官方的 CSS 特性全表：W3C - Full property table， 可以查阅 CSS 特性，关于它的值的表示看不明白？不要紧，下面的内容将会就此做详细的讲解。</p>
+<p>CSS 特性的值1<br>整数和数字<br>有些值类型可能会包含整数和实数。实数和整数都只能用十进制的数来表示。</p>
+<p>整数值表示为 <integer>，是由数字 0～9，和前面的正负号组成。例如：0，-2，-7，7。</integer></p>
+<p>实数值表示为 <number>，是由 0～9，小数点以及前面的正负号组成。例如：-1.5，3.1415926，实数包括整数。</number></p>
+<p>注意，有时候，某些特性会给定实数和整数的确切范围，比如，经常用到的非负整数。</p>
+<p>使用此类值的 CSS 特性有：’line-height’、’pitch-range’、’richness’、’z-index’ 和 ‘widows’ 等。</p>
+<p>比如其中的 ‘z-index’ 表示为：</p>
+<p>‘z-index’ : auto | <integer> | inherit</integer></p>
+<p>长度值<br>长度值适用于水平或垂直方向的尺寸。</p>
+<p>长度值表示为 <length>。长度值的格式是： <number> + 单位( e.g., px, em, etc.)，注意，一定要有单位，除非这个值是0。 如果长度值是0，单位可有可无。</number></length></p>
+<p>可用此类值的 CSS 特性很多，例如，’margin’、’padding’、’height’ 和 ‘width’等。</p>
+<p>有些特性支持负的长度值，比如 ‘margin’。但是如果给一个不支持负长度值的特性设置一个负的值，那么这个声明会被忽略。</p>
+<p>长度的单位有两种：相对长度和绝对长度。下面对这两类单位详细介绍。</p>
+<p>1). 相对长度<br>相对长度会随着它参考值的变化而变化，不是固定的值。</p>
+<p>em : 与 ‘font-size’ 的大小有关，与作用到元素上的 ‘font-size’ 的值大小相等；<br>ex : 一个小写字母 x 的高度2；<br>px : 像素数( pixels )。<br>例如：</p>
+<p>h1 { margin: 0.5 em }      /<em> em </em>/<br>h1 { margin: 1 ex }        /<em> ex </em>/<br>p  { font-size: 12 px }    /<em> px </em>/2). 绝对长度<br>in : 英寸 — 等于2.54厘米<br>cm : 厘米<br>mm : 毫米<br>pt : 点 — CSS 2.1里 1pt 等于 1/72 英寸<br>pc : 皮卡 — 1pc 等于 12pt，也就是 1/6 英寸<br>例如：</p>
+<blockquote>
+<p>h1 { margin: 0.5in }      /<em> inches  </em>/<br>h2 { line-height: 3cm }   /<em> centimeters </em>/<br>h3 { word-spacing: 4mm }  /<em> millimeters </em>/<br>h4 { font-size: 12pt }    /<em> points </em>/<br>h4 { font-size: 1pc }     /<em> picas </em>/</p>
+</blockquote>
+<p>百分比值<br>百分比值表示为 <percentage>。它的格式是：<number> + %。</number></percentage></p>
+<p>常见可用百分比为值的 CSS 特性如：’height’、’width’ 等。</p>
+<p>百分比值总是跟其他的值有关，比如长度值。</p>
+<p>URL 和 URI<br>Web 上可用的每种资源 - HTML 文档、图像、视频片段、程序等 - 由一个通用资源标志符（Uniform Resource Identifier, 简称 “URI” ）进行定位 3。 </p>
+<p>URL 是Uniform Resource Location的缩写，译为 “统一资源定位符” 。它是 URI 命名机制的一个子集。</p>
+<p>URI 表示为 <uri>。注意，定义 URI 使用 “url()” 。</uri></p>
+<p>比如，’background-image’ 特性的描述：</p>
+<p>‘background-image’ : <uri> | none | inherit</uri></p>
+<p>而在设置该特性的时候：</p>
+<blockquote>
+<p>background-image:url(…)</p>
+</blockquote>
+<p>计数器<br>计数器使用大小写敏感的标识符来表示。参考特性： ‘counter-increment’ 和 ‘counter-reset’。</p>
+<p>计数器的标记是 ‘counter(<identifier>)’ 或者 ‘counter(<identifier>, &lt;’list-style-type’&gt;)’，其中 ‘list-style-type’ 默认为 “decimal”，即小数点。</identifier></identifier></p>
+<p>注意，IE 浏览器从 IE8 才开始支持计数器。</p>
+<p>颜色<br>颜色值用 <color> 来表示。可以是一个 RGB 的颜色数值，也可以是关键词。</color></p>
+<p>颜色的关键词列表是：aqua、 black、 blue、 fuchsia、 gray、 green、 lime、 maroon、 navy、 olive、 orange、 purple、 red、 silver、 teal、 white 和 yellow。</p>
+<p>除此之外，用户还可以使用用户环境中某些对象的颜色 4。</p>
+<p>当然，这些关键词，浏览器可以扩展，比如：‘gold’、‘darkgray’ 等。</p>
+<p>RGB 颜色被用于数值表示颜色。例如，用不同的表示方法表示红色：</p>
+<blockquote>
+<p>em { color : #f00 }<br>em { color : #ff0000 }<br>em { color : rgb(255,0,0) }<br>em { color : rgb(100%, 0%, 0%) }</p>
+</blockquote>
+<p>不存在的特性和不合法的值</p>
+<p>对于不存在的特性和不合法的值，用户端都应该以忽略此声明的方式予以处理。比如：</p>
+<pre><code><span class="tag">p</span>{
+    <span class="attribute">W3Help </span>: <span class="string">"good"</span>;
+    <span class="attribute">height </span>: <span class="string">"hello"</span>;
+}
+</code></pre><p>此样式中 W3Help 字符虽然存在，但是却不存在 W3Help 这个 CSS 特性，也不存在 “hello” 的 height 特性的值。所以，这两条样式声明都应该被忽略。</p>
+<p>不合法的值可能引起的浏览器兼容性问题，其中有一种情况是人为的错误，被不同的浏览器以不同的方式处理，还有一种情况是，某些浏览器支持其他浏览器所不支持的值，比如：</p>
+<pre><code><span class="rule"><span class="attribute">cursor </span>:<span class="value"> <span class="string">'hand'</span></span></span>;
+</code></pre><p>恐怕，只有 IE 以及他的追随者还有使用 IE 渲染引擎的国内特色”山寨”浏览器，支持 ‘cursor’ 特性的 “hand” 值。</p>
+<p>CSS 句法( CSS Syntax )</p>
+<p>语法1是语言表达的规则。各种语言都有不同的语法，包括人类语言和计算机语言等。</p>
+<p>语法有时候也指句法( syntax )，指的是句子由词汇构成的规律。也可以将它看作组成句子的规则。它包含两个方面的涵义：</p>
+<p>词汇：即，可以构成句子的有效用词。例如，英语中的单词，JavaScript 中的 “var”、”for” 等等；<br>规律：也可以将它看作规则，即，如何使用有效的词汇组成句子。比如，JavaScript 中要用 ‘var toolName;’ 定义变量， 但是 Java 中却应该使用 ‘String toolName;’ 等定义变量。 不同的语言，组成句子的规则不同。<br>CSS，同我们所认识的其他语言，例如 JavaScript 一样，有它自己的句法，适用于任何版本的 CSS。后续版本的应该坚持使用此核心句法，当然可以增加句法规则。</p>
+<p>CSS 句法2描述了 CSS 的关键字、厂商扩展、可用字符集、规则集合、声明块、选择器、特性以及注释等所有 CSS 的构成部分。</p>
+<p>如常用的 Class 选择器命名规范被定义为：</p>
+<pre><code><span class="class"><span class="keyword">class</span> : <span class="typename">'.' IDENT</span></span>
+</code></pre><p>CSS 解析错误</p>
+<p>CSS 代码，可以看作是依照 CSS 句法所写的句子，而读这个句子的人，就是浏览器。因此，错误可能出自两个地方，一是不遵照 CSS 句法写代码的人， 一是不能正确解析 CSS 代码的浏览器。</p>
+<p>在符合句法的情况下，一段 CSS 代码的解析，也可能在各个浏览器中都相同，但在不符合句法的时候，浏览器可能要加入自己的处理方式。正是因为浏览器的多样化， 才造成了对同一段 CSS 代码解析方式的多样化。</p>
+<p>这里所讲的 CSS 解析错误，指的是，如果浏览器遇到不遵循句法(不合法)的 CSS 代码，会因无法正确的解析，而产生的错误。</p>
+<p>某些不合句法的 CSS 错误，W3C 给出了确切的处理规则。</p>
+<p>CSS 解析错误的处理规则</p>
+<p>错误处理总则<br>对于不合法的 CSS 代码，浏览器需要忽略一部分不合法的样式表。</p>
+<p>CSS2.1 及所有后继版本中，对于任何以破折号、下划线开头的 ‘property:value’ 组合1和不包含标识符的 @-keywords 组合，都以忽略的方式处理。</p>
+<p>分析以下代码：</p>
+<pre><code><span class="tag">div</span><span class="rules">{
+    <span class="rule"><span class="attribute">_height</span>:<span class="value"> <span class="number">19px</span></span></span>;
+    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;
+}</span>
+</code></pre><p>未知的特性( properties )<br>未知的特性，即属于以上所说不属于它句法中有效词汇的词汇。浏览器必须忽略带有未知特性的声明。</p>
+<pre><code><span class="tag">div</span><span class="rules">{
+    <span class="rule"><span class="attribute">yes</span>:<span class="value"><span class="number">100px</span></span></span>;
+    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;
+}</span>
+</code></pre><p>其中，’yes’ 不是 CSS 的特性，因此上述的声明 ‘yes:100px;’ 应该被忽略。</p>
+<p>不合法的值</p>
+<p>不合法的值，也属于句法中无效的词汇。浏览器必须忽略带有不合法值的声明。</p>
+<p>例:</p>
+<pre><code><span class="tag">div</span><span class="rules">{
+    <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100</span></span></span>;
+    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;
+}</span>
+</code></pre><p>‘height’ 特性的值2应该是一个数字后加一个单位构成的值。只有一个数字的值是不合法的，应当忽略3。</p>
+<p>畸形的声明</p>
+<p>当浏览器解析一个声明时，读取它的代码直到这个声明的结束，同时，检查 (), [], {}, “”, 和 ‘’ 的匹配规则， 并且正确的处理编码，这时候，浏览器必须处理它所遇到的意外出现的标记。 怎样处理？标准没有明确指出。 因为针对不同的情况，应该采取不同的处理手段。</p>
+<pre><code><span class="tag">p</span>{<span class="tag">height</span>} <span class="comment">/* 丢失了 ”:” 和后面的值，此属性应被忽略 */</span>
+
+({)<span class="tag">P</span>{<span class="tag">width</span><span class="pseudo">:100px</span>}   <span class="comment">/* 多余的  ({)，此行应被忽略*/</span>
+</code></pre><p>不可用的 @ 关键字</p>
+<p>本条类似于未知的特性。</p>
+<p>例:</p>
+<pre><code><span class="variable">@google</span>{
+    <span class="attribute">height</span>:<span class="number">100px</span>;
+    <span class="attribute">width</span>:<span class="number">100px</span>;
+}
+</code></pre><p>样式表的意外结束<br>浏览器必须自动闭合敞开的结构(如，块，字符串和注解等)</p>
+<p>例:</p>
+<pre><code><span class="tag">p</span><span class="rules">{
+    <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;
+        <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;</span>
+</code></pre><p>缺少了闭合的大括号，浏览器应该自动补齐：</p>
+<p>符串的意外结束</p>
+<p>若值为字符串，却没有用单双引号闭合的情况。用户端应该在一行的结尾处，闭合字符串，一般都是以分号结尾。</p>
+<p>例:</p>
+<pre><code><span class="tag">p</span> {
+    <span class="attribute">color</span>: green;
+    <span class="attribute">font-family</span>: 'Courier New Times
+    <span class="attribute">color</span>: red;
+    <span class="attribute">color</span>: yellow;
+}
+</code></pre><p>以上代码相当于：</p>
+<pre><code><span class="tag">p</span> <span class="rules">{
+    <span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;
+    <span class="rule"><span class="attribute">color</span>:<span class="value"> yellow</span></span>;
+}</span>
+</code></pre><p>以分号为界限，”font-family: ‘Courier New Times color: red;” 这条声明中，‘font-family’ 的值不合法，应当被忽略。实际情况是，在 IE 中被忽略的是 “font-family: ‘Courier New Times color: red; color: yellow;”</p>
+<p>CSS 值的解析<br>CSS 中的声明，由 CSS 的特性和值，中间以 “:” 隔开组成1。</p>
+<p>我们可以使用 CSS 选择器，为选中的元素设置需要的样式。</p>
+<p>在介绍 CSS 的特性和值的时候，特地的提到了浏览器应该怎样处理错误的值 – 应该将包含错误值，不符合句法的值的声明直接忽略。然而有些浏览器却按照自己的方式做了某些纠正，也就是浏览器容错。</p>
+<p>那么，有没有想过，在我们给予一个特性正确的值的情况下，浏览器应该怎样处理呢？是否最终你看到的就是你设置的值呢？答案是否定的！</p>
+<p>当浏览器解析了一个文档 ( document ) 并且生成了文档树 ( document tree )，那么，它必须为文档树中的每一个元素，根据目标媒介类型所适用的每一个特性，指定一个值。 </p>
+<p>而开发者给某个元素的 CSS 特性设置某个值，到这个元素的特性值被计算渲染，也就是得到最终的值，需要经过四步计算：</p>
+<p>通过指定值 ( specified value ) 确定这个值；<br>将这个值分解为一个可以用来继承的值，即计算后的值 ( computed value )；<br>必要情况下把计算后的值转换成一个绝对的值，即使用值 ( used value )<br>根据显示环境的限制，改变使用值以使之能够显示在用户端，最后这个值被称作实际值 ( actual value )。<br>这些值的计算过程类似工资的计算过程，你的应得工资是一个设置值，实际工资还要减掉你的缺勤，保险，个人所得税等……实际计算出来的数字才是应用到你身上的具体数额。</p>
+<p>下面来详细的介绍这四个步骤的四种值。</p>
+<p>注：</p>
+<p>关于 CSS 的特性和值，以及 CSS 声明，见 ：W3Help - KB002: CSS 特性和值<br>指定值<br>一般来讲，开发者设定的值，即为指定值，但是最终这个值的确定还需考虑其他几个方面( 按照优先顺序排列 )。</p>
+<p>层叠顺序<br>首先考虑有层叠顺序的情况，即开发者明确了设置了 CSS 特性的值。</p>
+<p>层叠顺序会影响开发者设定的值，所以，应该根据层叠顺序来确定声明的优先级别，优先级高的声明才会起作用。关于层叠顺序，后续会有详细的说明。</p>
+<p>例如，开发者在定义样式的时候，加了 ‘!important’ 的声明要优于未加 ‘!important’ 的声明。</p>
+<pre><code><span class="tag">div</span><span class="rules">{
+    <span class="rule"><span class="attribute">height </span>:<span class="value"> <span class="number">100px</span></span></span>;
+    <span class="rule"><span class="attribute">height </span>:<span class="value"> <span class="number">130px</span> <span class="important">!important</span></span></span>;
+}</span>
+</code></pre><p>其中，带有 ‘!important’ 的 height 声明才是 指定值。</p>
+<p>继承( inheritance )<br>如果没有明确的设置这个值，那么会先考虑它是否继承了父元素的值。这时候指定值使用它父元素的值，通常是父元素的计算值。</p>
+<p>例如：</p>
+<pre><code><span class="tag">&lt;<span class="title">p</span> <span class="attribute">style</span>=<span class="value">"color:red;"</span>&gt;</span>The greet <span class="tag">&lt;<span class="title">em</span>&gt;</span>is<span class="tag">&lt;/<span class="title">em</span>&gt;</span> good!<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+</code></pre><p>EM 元素没有指定颜色，他将继承父元素的颜色用来显示字符串 “is”。因此，EM 元素是红色。EM 元素 ‘color’ 特性的指定值在没有层叠影响的情况下，就是 “red”。</p>
+<p>初始值</p>
+<p>最后，在不存在以上两种情况的时候，使用元素的初始值。</p>
+<p>如果不设置元素的 ‘width’，它的指定值就是 “auto”；对于 ‘font-size’，不设置的情况下，其指定值是 “medium”。</p>
+<p>关于指定值在 JavaScript 中的获取方法，可以使用 “element.style.property” 语句模式：</p>
+<p>计算值<br>指定值在层叠的过程中被分解成计算值。例如，URI 会被解析成绝对地址，而 ‘em’ 和 ‘ex’ 单位会被计算为 pixel 或者绝对长度。</p>
+<p>例如: </p>
+<pre><code>&lt;<span class="keyword">div</span> style=<span class="string">"width:1em; "</span>&gt;hello!&lt;/<span class="keyword">div</span>&gt;
+</code></pre><p>浏览器默认 ‘font-size’ 是 ‘16px’，所以 ‘1em’ 计算值应该是 ‘16px’。</p>
+<p>当指定值不是 ‘inherit’ 的时候，计算值应该是 CSS 特性定义的 “计算后的值”一行所标明的值。例如对 ‘border-top-width’1的特性说明的最后一行：</p>
+<p>Computed value: absolute length; ‘0’ if the border style is ‘none’ or ‘hidden’</p>
+<p>以上标明，边框宽度的计算值是一个绝对长度 2，当 border 的设置值是 ‘none’ 或 ‘hidden’ 的时候，计算值为 0。</p>
+<p>当 CSS 特性不适合元素时，计算值还是存在的。</p>
+<pre><code>&lt;<span class="keyword">div</span> style=<span class="string">"width:1em; left:1em;"</span>&gt;hello!&lt;/<span class="keyword">div</span>&gt;
+</code></pre><p>用户端样式表<br>来自浏览器的样式，被称作 UA style，是浏览器默认的样式。 比如，对于 DIV 元素，浏览器默认其 ‘display’ 的特性值是 “block”，而 SPAN 是 “inline”。</p>
+<p>在 Firefox 的地址栏中输入：resource://gre/res/html.css，即可得到 Firefox 的浏览器默认样式表。</p>
+<p>用户样式表<br>这个样式表是使用浏览器的用户，根据自己的偏好设置的样式表。</p>
+<p>比如，用户希望所有 P 元素中的字体都默认显示成蓝色，可以先定义一个样式表，存成 css 文件。CSS 代码：</p>
+<pre><code><span class="tag">p</span><span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">blue</span></span>; }</span>
+</code></pre><p>CSS 层叠顺序( Cascading order )</p>
+<p>为了找到元素/特性组合的值，用户端必须应用如下的排列顺序：</p>
+<p>对于目标媒介类型 (media type)，找到存有疑问的元素和属性的所有声明。如果相关联的选择器匹配存有疑问的元素，并且目标媒介匹配包含声明并且和样式表的路径在所有链接上达到一致的 @media 规则中所有的媒介列表。<br>根据 CSS 样式的来源和重要性(是否含 !important )，给出了优先级的升序排列：<br>用户端声明( UA declarations )<br>一般用户声明( user normal declarations )<br>一般作者声明( author normal declarations )<br>加了 ‘!important’ 的作者声明( author important declarations )<br>加了 ‘!important’ 的用户声明( user important declarations )<br>拥有相同重要性和来源的规则，按照 CSS specificity 来排序。此处，需要注意一下层叠顺序和选择器的特殊性1的关系。 选择器的特殊性是在相同来源，相同重要性的规则之间判定最终哪个规则会起作用。 比如， 同是开发者自己定义的样式，并且，没有使用 “!important” 规则，这样的样式才可以计算特殊性。<br>最后，根据先后次序来排列：如果两条规则具有相同的权重，相同的来源和相同的选择器特殊性，则后出现的规则超越先出现的规则。 引入的样式表( @import )中的规则被认为出现在样式表本身的所有规则之前。<br>例：</p>
+<p>用户自定义样式，userContent.css：</p>
+<pre><code><span class="tag">p</span><span class="rules">{
+    <span class="rule"><span class="attribute">background-color</span>:<span class="value">black</span></span>;
+    <span class="rule"><span class="attribute">color</span>:<span class="value">red <span class="important">!important</span></span></span>;
+}</span>
+</code></pre><p>按照上节中的做法，给浏览器设置用户样式。</p>
+<p>测试页面，test.html:</p>
+<pre><code><span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css">
+<span class="tag">p</span> <span class="rules">{
+<span class="rule"><span class="attribute">color</span>:<span class="value"> green <span class="important">!important</span></span></span>;
+}</span>
+</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+<span class="tag">&lt;<span class="title">p</span> <span class="attribute">style</span>=<span class="value">"background-color : white; color : blue;"</span>&gt;</span> hello!! <span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+</code></pre>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2015/08/28/兼容性js案例分析/" style="float: left;">
+        ← Compatibility-JS（四）
+    </a>
+    
+    
+    <a class="pull-right" href="/2015/08/27/兼容性js（二）/">
+        Compatibility-JS（二） →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2015/08/28/兼容性js知识库/" data-title="Compatibility-JS（三）" data-url="http://yoursite.com/2015/08/28/兼容性js知识库/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"duoshuo_name"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Peter-Liusongshan. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+        
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+    
+    resizeHero();
+    
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>
